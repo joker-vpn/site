@@ -223,8 +223,8 @@
 
   /* блок приложений */
   .ib{width:1em;height:1em;flex:none;fill:currentColor}
-  .ka-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start}
-  .ka-main{position:relative;overflow:hidden;border-radius:24px;padding:30px;border:2px solid var(--violet);background:radial-gradient(circle at 85% 15%,rgba(124,58,237,.45),transparent 55%),linear-gradient(160deg,#211a3b,var(--card) 70%);box-shadow:0 0 50px rgba(124,58,237,.25)}
+  .ka-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:stretch}
+  .ka-main{display:flex;flex-direction:column;position:relative;overflow:hidden;border-radius:24px;padding:30px;border:2px solid var(--violet);background:radial-gradient(circle at 85% 15%,rgba(124,58,237,.45),transparent 55%),linear-gradient(160deg,#211a3b,var(--card) 70%);box-shadow:0 0 50px rgba(124,58,237,.25)}
   .ka-rec{position:absolute;top:22px;right:22px;background:var(--lime);color:#0b0a12;font-weight:800;font-size:12px;padding:6px 12px;border-radius:999px}
   .ka-top{display:flex;gap:16px;align-items:center;padding-right:110px}
   .ka-top img{width:72px;height:72px;border-radius:18px;box-shadow:0 10px 30px rgba(124,58,237,.5);flex:none}
@@ -232,10 +232,10 @@
   .ka-by{color:var(--muted);font-size:13px;margin-top:2px}
   .ka-ver{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;font-size:12px}
   .ka-ver b{background:#231d38;color:#c4b5fd;padding:3px 9px;border-radius:999px;font-weight:600}
-  .ka-list{list-style:none;margin:22px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .ka-list li{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:#d9d7e6}
+  .ka-list{list-style:none;margin:24px 0;display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+  .ka-list li{display:flex;gap:9px;align-items:center;font-size:14px;color:#d9d7e6;white-space:nowrap}
   .ka-list .i{width:20px;height:20px;color:var(--lime);vertical-align:0}
-  .ka-btns{display:flex;gap:12px}
+  .ka-btns{display:flex;gap:12px;margin-top:auto}
   .ka-btn{flex:1;display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:16px;transition:transform .15s,box-shadow .15s,border-color .15s}
   .ka-btn:hover{transform:translateY(-2px)}
   .ka-btn .ib{width:26px;height:26px}
@@ -246,20 +246,22 @@
   .ka-btn.ghost:hover{border-color:var(--violet2)}
   .ka-all{margin-top:12px;font-size:13px;color:var(--muted)}
   .ka-all a{color:#c4b5fd}
+  .ka-side{display:flex;flex-direction:column}
   .ka-side h3{font-size:18px;margin:4px 0 4px}
   .ka-hint{color:#8d88a3;font-size:13px;margin-bottom:14px}
-  .ka-app{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:14px}
+  .ka-app{flex:1;display:flex;flex-direction:column;justify-content:center;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:14px}
+  .ka-app:last-child{margin-bottom:0}
   .ka-ah{display:flex;gap:12px;align-items:center;margin-bottom:12px}
   .ka-ah img{width:46px;height:46px;border-radius:12px;flex:none}
   .ka-n{font-weight:800;font-size:18px}
   .ka-d{color:var(--muted);font-size:13px;margin-top:2px}
-  .ka-chips{display:flex;flex-wrap:wrap;gap:8px}
-  .ka-chip{display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:12px;background:#231d38;font-size:13px;font-weight:600;color:var(--text);border:1px solid var(--line);transition:border-color .15s}
+  .ka-chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .ka-chip{display:flex;align-items:center;gap:6px;padding:8px 12px;white-space:nowrap;min-width:0;border-radius:12px;background:#231d38;font-size:13px;font-weight:600;color:var(--text);border:1px solid var(--line);transition:border-color .15s}
   .ka-chip:hover{border-color:var(--violet)}
   .ka-chip .ib{width:16px;height:16px;color:var(--violet2)}
-  .ka-chip i{font-style:normal;color:var(--muted);margin-left:2px}
+  .ka-chip i{font-style:normal;color:var(--muted);margin-left:auto;padding-left:6px;font-weight:500}
   @media (max-width:900px){.ka-grid{grid-template-columns:1fr;max-width:620px;margin:0 auto}}
-  @media (max-width:480px){.ka-main{padding:22px 18px}.ka-top{padding-right:0;padding-top:30px}.ka-rec{top:16px;right:16px}.ka-list{grid-template-columns:1fr}.ka-btns{flex-direction:column}}
+  @media (max-width:480px){.ka-main{padding:22px 18px}.ka-top{padding-right:0;padding-top:30px}.ka-rec{top:16px;right:16px}.ka-list{grid-template-columns:1fr}.ka-btns{flex-direction:column}.ka-chip{padding:8px 10px;font-size:13px;flex-wrap:wrap;align-content:center;row-gap:1px;min-height:50px}.ka-chip i{flex-basis:100%;margin-left:22px;padding-left:0;font-size:11px;line-height:1.2}}
 
   /* «Почему Joker VPN» — бенто */
   .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -641,10 +643,10 @@
             </div>
           </div>
           <ul class="ka-list">
-            <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg><span>Подключение в&nbsp;одно касание — прямо из&nbsp;бота</span></li>
-            <li><svg class="i" aria-hidden="true"><use href="#i-refresh"/></svg><span>Обновления приходят автоматически</span></li>
-            <li><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg><span>Все страны — в&nbsp;одном списке</span></li>
-            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span>Бесплатно для клиентов Joker VPN</span></li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg><span>Подключение в&nbsp;одно касание</span></li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-refresh"/></svg><span>Автоматические обновления</span></li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg><span>Все страны в&nbsp;одном списке</span></li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span>Бесплатно для клиентов</span></li>
           </ul>
           <div class="ka-btns">
             <a class="ka-btn main" href="https://github.com/joker-vpn/kivin-releases/releases/download/v0.3.0/Kivin-0.3.0-arm64-v8a.apk" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-android"/></svg><span><b>Скачать для Android</b><small>APK · 33&nbsp;МБ</small></span></a>
@@ -657,11 +659,11 @@
           <p class="ka-hint">Для iPhone и&nbsp;Mac — или как запасной вариант</p>
           <div class="ka-app">
             <div class="ka-ah"><img src="apps/happ.png" alt="" width="46" height="46"><div><div class="ka-n">Happ</div><div class="ka-d">Работает на&nbsp;всех устройствах</div></div></div>
-            <div class="ka-chips"><a class="ka-chip" href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-apple"/></svg> iPhone <i>App Store</i></a><a class="ka-chip" href="https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ.apk" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-android"/></svg> Android <i>APK</i></a><a class="ka-chip" href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-windows"/></svg> Windows</a><a class="ka-chip" href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.macOS.universal.dmg" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-apple"/></svg> macOS</a></div>
+            <div class="ka-chips"><a class="ka-chip" href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-apple"/></svg><span>iPhone</span><i>App Store</i></a><a class="ka-chip" href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-apple"/></svg><span>macOS</span><i>App Store</i></a><a class="ka-chip" href="https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ.apk" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-android"/></svg><span>Android</span><i>APK</i></a><a class="ka-chip" href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-windows"/></svg><span>Windows</span></a></div>
           </div>
           <div class="ka-app">
             <div class="ka-ah"><img src="apps/incy.png" alt="" width="46" height="46"><div><div class="ka-n">INCY</div><div class="ka-d">Простой и&nbsp;удобный на&nbsp;iPhone и&nbsp;Mac</div></div></div>
-            <div class="ka-chips"><a class="ka-chip" href="https://apps.apple.com/us/app/incy/id6756943388" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-apple"/></svg> iPhone / Mac <i>App Store</i></a><a class="ka-chip" href="https://play.google.com/store/apps/details?id=llc.itdev.incy" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-android"/></svg> Android <i>Google Play</i></a><a class="ka-chip" href="https://github.com/INCY-DEV/incy-platforms/releases/latest" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-windows"/></svg> Windows</a></div>
+            <div class="ka-chips"><a class="ka-chip" href="https://apps.apple.com/us/app/incy/id6756943388" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-apple"/></svg><span>iPhone</span><i>App Store</i></a><a class="ka-chip" href="https://apps.apple.com/us/app/incy/id6756943388" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-apple"/></svg><span>macOS</span><i>App Store</i></a><a class="ka-chip" href="https://play.google.com/store/apps/details?id=llc.itdev.incy" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-android"/></svg><span>Android</span><i>Google Play</i></a><a class="ka-chip" href="https://github.com/INCY-DEV/incy-platforms/releases/latest" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-windows"/></svg><span>Windows</span></a></div>
           </div>
         </div>
       </div>
