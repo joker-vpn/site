@@ -389,6 +389,73 @@
     .stats .stat span{font-size:11px}
   }
 
+  /* FAQ — две колонки */
+  .faq2{display:grid;grid-template-columns:330px 1fr;gap:40px;align-items:start}
+  .faq-side{position:sticky;top:96px}
+  .faq-side h2{text-align:left;margin-bottom:12px}
+  .faq-lead{color:var(--muted);margin-bottom:24px;line-height:1.55}
+  .faq-sup{background:linear-gradient(160deg,#241b45,var(--card));border:1px solid #3b2f6b;border-radius:22px;padding:22px}
+  .faq-av{width:48px;height:48px;border-radius:14px;background:var(--violet);display:grid;place-items:center;margin-bottom:14px;color:#fff}
+  .faq-av .i{width:26px;height:26px;vertical-align:0}
+  .faq-sup b{font-size:18px}
+  .faq-sup p{color:var(--muted);margin:6px 0 16px;font-size:14px}
+  .faq-list{display:flex;flex-direction:column;gap:10px}
+  details.q{background:#14111f;border:1px solid #241f38;border-radius:18px;padding:0;margin:0;transition:border-color .2s,box-shadow .2s,background .2s}
+  details.q[open]{background:var(--card);border-color:var(--violet);box-shadow:0 0 30px rgba(124,58,237,.18)}
+  details.q summary{display:flex;align-items:center;gap:14px;padding:16px 18px;font-size:16px}
+  details.q summary::after{content:none}
+  .q-ic{width:36px;height:36px;border-radius:11px;background:#231d38;display:grid;place-items:center;flex:none;color:var(--lime)}
+  .q-ic .i{width:19px;height:19px;vertical-align:0}
+  .q-t{flex:1}
+  .q-pm{width:28px;height:28px;border-radius:50%;background:#231d38;color:var(--violet2);flex:none;position:relative;transition:transform .2s,background .2s,color .2s}
+  .q-pm::before,.q-pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;border-radius:2px;background:currentColor;transform:translate(-50%,-50%)}
+  .q-pm::after{transform:translate(-50%,-50%) rotate(90deg)}
+  details.q[open] .q-pm{background:var(--violet);color:#fff;transform:rotate(45deg)}
+  .q-a{padding:0 18px 16px 68px}
+  .q-a p{color:#a9a5bb;font-size:14px;line-height:1.6;padding:0}
+  .q-a a{color:var(--lime)}
+  .q-a .i{width:16px;height:16px}
+  .q-a .q-note{color:#8a8699;font-size:12px;margin-top:8px}
+  /* финальный блок */
+  .fin-sec{padding-top:60px}
+  .fin{position:relative;overflow:hidden;border-radius:28px;padding:44px 50px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;background:radial-gradient(circle at 85% 40%,rgba(163,230,53,.18),transparent 40%),linear-gradient(120deg,#2d1f5e,#171327 70%);border:1px solid #4c3a8a}
+  .fin h2{font-size:clamp(30px,4vw,40px);text-align:left;margin:0}
+  .fin p{color:#c9c5d8;margin:10px 0 22px;font-size:17px}
+  .fin-btns{display:flex;flex-wrap:wrap;gap:12px}
+  .fin-btns .btn{padding:14px 22px}
+  .fin-btns .i{width:18px;height:18px}
+  .fin-trust{display:flex;flex-wrap:wrap;gap:8px 18px;color:#a9a5bb;font-size:13px;margin-top:18px}
+  .fin-trust > *::before{content:"✓ ";color:var(--lime);font-weight:800}
+  .fin-trust a{color:#a9a5bb;text-decoration:underline;text-decoration-color:rgba(169,165,187,.4);text-underline-offset:3px}
+  .fin-trust a:hover{color:var(--text)}
+  .fin-cards{position:relative;width:200px;height:230px;margin-right:30px}
+  .fin-b{position:absolute;inset:10px 0 0 30px;background:var(--lime);border-radius:18px;transform:rotate(12deg)}
+  .fin-f{position:absolute;inset:0 30px 10px 0;background:#ecebf3;border-radius:18px;transform:rotate(-8deg);display:grid;place-items:center;box-shadow:0 20px 50px rgba(0,0,0,.5);-webkit-backface-visibility:hidden;backface-visibility:hidden}
+  .fin-shield{width:110px;height:127px}
+  /* подвал */
+  .site-foot{margin-top:60px;border-top:1px solid #1f1b30;padding:40px 0 30px;color:var(--muted);font-size:14px}
+  .sf-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+  .sf-brand .logo{font-size:19px}
+  .sf-brand p{color:#8a8699;font-size:13px;margin-top:10px;line-height:1.5;max-width:260px}
+  .sf-col h4{margin:4px 0 12px;font-size:13px;color:#8a8699;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+  .sf-col a{display:block;color:#c9c5d8;font-size:14px;margin:0 0 9px}
+  .sf-col a:hover{color:var(--text)}
+  .sf-copy{grid-column:1/-1;border-top:1px solid #1f1b30;padding-top:18px;color:#8a8699;font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  @media (max-width:900px){
+    .faq2{grid-template-columns:1fr;gap:28px}
+    .faq-side{position:static}
+    .fin{grid-template-columns:1fr;padding:32px 24px}
+    .fin-cards{display:none}
+    .sf-grid{grid-template-columns:1fr 1fr}
+    .sf-brand{grid-column:1/-1}
+  }
+  @media (max-width:480px){
+    .q-a{padding-left:18px}
+    details.q summary{gap:10px;padding:14px}
+    .fin-btns .btn{width:100%}
+    .sf-grid{grid-template-columns:1fr}
+  }
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
   .reveal.on{opacity:1;transform:none}
@@ -448,6 +515,8 @@
   <symbol id="b-windows" viewBox="0 0 24 24"><path d="M3 5.5 10 4.5v7H3zm8-1.2L21 3v8.5H11zM3 12.5h7v7L3 18.5zm8 0h10V21l-10-1.4z"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
   <symbol id="i-wifi-off" viewBox="0 0 24 24"><path d="M2 8.5a15 15 0 0 1 20 0"/><path d="M5 12a10 10 0 0 1 14 0"/><path d="M8.5 15.5a5 5 0 0 1 7 0"/><path d="M12 19h.01"/><path d="M3 3l18 18"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></symbol>
   <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
 </svg>
 
@@ -722,43 +791,57 @@
 
   <!-- FAQ -->
   <section id="faq" class="steps-bg">
-    <div class="wrap">
-      <h2 class="reveal">Частые вопросы</h2>
-      <p class="sub reveal">Не нашли ответ? Напишите в <a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener" style="color:var(--lime)">бот поддержки</a> — поможем.</p>
-      <div class="faq">
-        <details class="reveal"><summary>Что такое VPN и зачем он нужен?</summary><p>VPN создаёт зашифрованный «туннель» между вашим устройством и интернетом. Так никто посторонний не&nbsp;сможет увидеть, что вы делаете в&nbsp;сети. Joker VPN шифрует соединение и&nbsp;защищает вашу приватность. Особенно это важно в&nbsp;общественном Wi-Fi: в&nbsp;кафе, аэропортах и&nbsp;гостиницах. Для обхода ограничений доступа к информации, установленных законодательством РФ, сервис не предназначен.</p></details>
-        <details class="reveal"><summary>Есть ли бесплатный пробный период?</summary><p>Да, 7&nbsp;дней бесплатно для новых пользователей, до&nbsp;<span class="trial-devices">2</span>&nbsp;устройств. Откройте Telegram-бота и&nbsp;включите пробный период — оплачивать ничего не&nbsp;нужно.</p></details>
-        <details class="reveal"><summary>Как оплатить подписку?</summary><p class="pay-yk">В боте выберите тариф и оплатите банковской картой — подписка включится автоматически за минуту. Можно и переводом по реквизитам: пришлите в бот скриншот чека, и доступ откроется после проверки.</p><p class="pay-manual">В боте выберите тариф, переведите сумму по реквизитам (Сбербанк / СБП) и пришлите скриншот чека. После проверки подписка продлится автоматически.</p></details>
-        <details class="reveal"><summary>Сколько устройств можно подключить?</summary><p>Зависит от тарифа: 7&nbsp;дней — до&nbsp;2&nbsp;устройств, 1&nbsp;месяц и&nbsp;6&nbsp;месяцев — до&nbsp;5, 1&nbsp;год — до&nbsp;10, пробный период — до&nbsp;<span class="trial-devices">2</span>. Одну ссылку-подписку можно добавить на&nbsp;телефон, компьютер и&nbsp;планшет.</p></details>
-        <details class="reveal"><summary>Какое приложение выбрать?</summary><p>На Android и Windows рекомендуем наше приложение Kivin. На iPhone, iPad и Mac — Happ или INCY (в российском App Store их нет, нужен Apple ID другой страны).</p></details>
-        <details class="reveal"><summary>Что делать, если VPN не подключается?</summary><p>Обновите подписку в приложении (кнопка <svg class="i" aria-hidden="true"><use href="#i-refresh"/></svg>), попробуйте другую страну или другое приложение. Не помогло — напишите в <a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener" style="color:var(--lime)">бот поддержки</a>, мы поможем.</p></details>
+    <div class="wrap faq2">
+      <div class="faq-side reveal">
+        <h2>Частые вопросы</h2>
+        <p class="faq-lead">Коротко о&nbsp;главном. Если ответа нет — спросите нас напрямую.</p>
+        <div class="faq-sup">
+          <div class="faq-av"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg></div>
+          <b>Не нашли ответ?</b>
+          <p>Напишите в&nbsp;бот поддержки — отвечает живой человек.</p>
+          <a class="btn btn-main" href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg> Написать в поддержку</a>
+        </div>
+      </div>
+      <div class="faq-list">
+        <details class="q reveal"><summary><span class="q-ic"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span><span class="q-t">Что такое VPN и зачем он нужен?</span><span class="q-pm" aria-hidden="true"></span></summary><div class="q-a"><p>VPN создаёт зашифрованный «туннель» между вашим устройством и&nbsp;интернетом: посторонние не&nbsp;увидят, что вы делаете в&nbsp;сети. Особенно это важно в&nbsp;общественном Wi‑Fi — в&nbsp;кафе, аэропортах и&nbsp;гостиницах.</p><p class="q-note">Для обхода ограничений доступа к&nbsp;информации, установленных законодательством РФ, сервис не&nbsp;предназначен.</p></div></details>
+        <details class="q reveal"><summary><span class="q-ic"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg></span><span class="q-t">Есть ли бесплатный пробный период?</span><span class="q-pm" aria-hidden="true"></span></summary><div class="q-a"><p>Да, 7&nbsp;дней бесплатно для новых пользователей, до&nbsp;<span class="trial-devices">2</span>&nbsp;устройств. Откройте Telegram-бота и&nbsp;включите пробный период — оплачивать ничего не&nbsp;нужно.</p></div></details>
+        <details class="q reveal"><summary><span class="q-ic"><svg class="i" aria-hidden="true"><use href="#i-card"/></svg></span><span class="q-t">Как оплатить подписку?</span><span class="q-pm" aria-hidden="true"></span></summary><div class="q-a"><p class="pay-yk">В боте выберите тариф и оплатите банковской картой — подписка включится автоматически за минуту. Можно и переводом по реквизитам: пришлите боту скриншот чека, и доступ откроется после проверки.</p><p class="pay-manual">В боте выберите тариф, переведите сумму по реквизитам (Сбербанк / СБП) и пришлите боту скриншот чека. После проверки подписка продлится автоматически.</p></div></details>
+        <details class="q reveal"><summary><span class="q-ic"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg></span><span class="q-t">Сколько устройств можно подключить?</span><span class="q-pm" aria-hidden="true"></span></summary><div class="q-a"><p>Зависит от тарифа: 7&nbsp;дней — до&nbsp;2&nbsp;устройств, 1&nbsp;месяц и&nbsp;6&nbsp;месяцев — до&nbsp;5, 1&nbsp;год — до&nbsp;10, пробный период — до&nbsp;<span class="trial-devices">2</span>. Одну ссылку-подписку можно добавить на&nbsp;телефон, компьютер и&nbsp;планшет.</p></div></details>
+        <details class="q reveal"><summary><span class="q-ic"><svg class="i" aria-hidden="true"><use href="#i-grid"/></svg></span><span class="q-t">Какое приложение выбрать?</span><span class="q-pm" aria-hidden="true"></span></summary><div class="q-a"><p>На Android и Windows рекомендуем наше приложение Kivin. На iPhone, iPad и Mac — Happ или INCY (в российском App Store их нет, нужен Apple ID другой страны).</p></div></details>
+        <details class="q reveal"><summary><span class="q-ic"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg></span><span class="q-t">Что делать, если VPN не подключается?</span><span class="q-pm" aria-hidden="true"></span></summary><div class="q-a"><p>Обновите подписку в приложении (кнопка <svg class="i" aria-hidden="true"><use href="#i-refresh"/></svg>), попробуйте другую страну или другое приложение. Не помогло — напишите в <a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener">бот поддержки</a> — поможем.</p></div></details>
       </div>
     </div>
   </section>
 
   <!-- ПРИЗЫВ -->
-  <section>
+  <section class="fin-sec">
     <div class="wrap">
-      <div class="cta reveal">
-        <h2>Готовы попробовать?</h2>
-        <p>7&nbsp;дней бесплатно. Подключение — за&nbsp;пару минут.</p>
-        <a href="https://t.me/VirtualShieldPro_bot" class="btn btn-main" target="_blank" rel="noopener">Подключить Joker VPN</a>
+      <div class="fin reveal">
+        <div class="fin-text">
+          <h2>Готовы попробовать?</h2>
+          <p>7&nbsp;дней бесплатно. Подключение — за&nbsp;пару минут.</p>
+          <div class="fin-btns">
+            <a href="https://t.me/VirtualShieldPro_bot" class="btn btn-main" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg> Подключить Joker VPN</a>
+            <a href="#apps" class="btn btn-ghost">Скачать Kivin</a>
+          </div>
+          <div class="fin-trust"><span>Без привязки карты</span><a href="offer.html#refund">Вернём деньги, если не заработает</a><span>Поддержка в Telegram</span></div>
+        </div>
+        <div class="fin-cards" aria-hidden="true"><div class="fin-b"></div><div class="fin-f"><svg class="fin-shield" viewBox="-66 -70 132 152" fill="none" shape-rendering="geometricPrecision" aria-hidden="true"><path d="M0 -62C20 -50 40 -46 58 -46V4C58 40 32 62 0 74C-32 62 -58 40 -58 4V-46C-40 -46 -20 -50 0 -62Z" fill="#7c3aed" stroke="#0b0a12" stroke-width="8" stroke-linejoin="round"/><g transform="scale(.66)"><clipPath id="finr"><rect x="0" y="-80" width="80" height="160"/></clipPath><path d="M0 -62C20 -50 40 -46 58 -46V4C58 40 32 62 0 74C-32 62 -58 40 -58 4V-46C-40 -46 -20 -50 0 -62Z" fill="#a3e635"/><path clip-path="url(#finr)" d="M0 -62C20 -50 40 -46 58 -46V4C58 40 32 62 0 74C-32 62 -58 40 -58 4V-46C-40 -46 -20 -50 0 -62Z" fill="#7c3aed"/><path d="M0 -62C20 -50 40 -46 58 -46V4C58 40 32 62 0 74C-32 62 -58 40 -58 4V-46C-40 -46 -20 -50 0 -62Z" fill="none" stroke="#0b0a12" stroke-width="12" stroke-linejoin="round"/></g></svg></div></div>
       </div>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="wrap foot">
-    <div class="logo"><img class="logo-img" src="logo.svg" alt="" width="40" height="40">Joker VPN</div>
-    <div class="foot-links">
-      <a href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener">Telegram-бот</a>
-      <a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener">Поддержка</a>
-      <a href="#faq">Вопросы</a>
-      <a href="offer.html">Оферта и возврат</a>
-      <a href="privacy.html">Конфиденциальность</a>
+<footer class="site-foot">
+  <div class="wrap sf-grid">
+    <div class="sf-brand">
+      <a href="#" class="logo"><img class="logo-img" src="logo.svg" alt="" width="40" height="40">Joker VPN</a>
+      <p>Быстрый и&nbsp;защищённый интернет: четыре страны, своё приложение и&nbsp;живая поддержка.</p>
     </div>
-    <div>© <span id="year">2026</span> Joker VPN</div>
+    <div class="sf-col"><h4>Сервис</h4><a href="#pricing">Тарифы</a><a href="#apps">Приложения</a><a href="#faq">Вопросы</a></div>
+    <div class="sf-col"><h4>Помощь</h4><a href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener">Telegram-бот</a><a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener">Поддержка</a></div>
+    <div class="sf-col"><h4>Документы</h4><a href="offer.html">Оферта и возврат</a><a href="privacy.html">Конфиденциальность</a></div>
+    <div class="sf-copy"><span>© <span id="year">2026</span> Joker VPN</span><span>Сделано с&nbsp;козырем в&nbsp;рукаве</span></div>
   </div>
 </footer>
 
