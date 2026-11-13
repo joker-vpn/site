@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Joker VPN</title>
+  <defs>
+    <path id="sh" d="M0 -62C20 -50 40 -46 58 -46V4C58 40 32 62 0 74C-32 62 -58 40 -58 4V-46C-40 -46 -20 -50 0 -62Z"/>
+    <clipPath id="right"><rect x="0" y="-80" width="80" height="160"/></clipPath>
+    <polygon id="star" points="0,-10 2.35,-3.24 9.51,-3.09 3.8,1.24 5.88,8.09 0,4 -5.88,8.09 -3.8,1.24 -9.51,-3.09 -2.35,-3.24"/>
+  </defs>
+  <!-- задняя салатовая карта -->
+  <rect x="150" y="104" width="212" height="304" rx="22" fill="#a3e635" transform="rotate(14 256 256)"/>
+  <!-- лицевая карта -->
+  <g transform="rotate(-14 256 256)">
+    <rect x="150" y="104" width="212" height="304" rx="22" fill="#ecebf3" stroke="#0b0a12" stroke-width="10"/>
+    <!-- углы: J и звезда -->
+    <text x="182" y="156" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="40" text-anchor="middle" fill="#0b0a12">J</text>
+    <use href="#star" transform="translate(182 180) scale(1.25)" fill="#0b0a12"/>
+    <g transform="rotate(180 256 256)">
+      <text x="182" y="156" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="40" text-anchor="middle" fill="#0b0a12">J</text>
+      <use href="#star" transform="translate(182 180) scale(1.25)" fill="#0b0a12"/>
+    </g>
+    <!-- щит -->
+    <g transform="translate(256 250)" stroke="#0b0a12" stroke-linejoin="round">
+      <use href="#sh" fill="#7c3aed" stroke-width="10"/>
+      <g transform="scale(0.66)">
+        <use href="#sh" fill="#a3e635"/>
+        <use href="#sh" fill="#7c3aed" clip-path="url(#right)"/>
+        <use href="#sh" fill="none" stroke-width="12"/>
+      </g>
+    </g>
+  </g>
+</svg>
