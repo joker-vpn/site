@@ -23,7 +23,8 @@
     --bg:#0b0a12; --bg2:#13111d; --card:#181526; --line:#2a2540;
     --text:#ecebf3; --muted:#9a96ad;
     --violet:#7c3aed; --violet2:#a78bfa; --lime:#a3e635;
-    --radius:18px;
+    --radius:18px; --radius-sm:14px;
+    --shadow:0 14px 36px -22px rgba(0,0,0,.75);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -33,8 +34,9 @@
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;border:0;transition:transform .15s,box-shadow .15s,background .15s}
   .btn:hover{transform:translateY(-2px)}
   .btn-main{background:var(--lime);color:#111;box-shadow:0 8px 30px -8px rgba(163,230,53,.6)}
+  .btn-main:hover{box-shadow:0 12px 36px -8px rgba(163,230,53,.75)}
   .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
-  .btn-ghost:hover{border-color:var(--violet2)}
+  .btn-ghost:hover{border-color:var(--violet2);background:rgba(167,139,250,.08)}
   .accent{background:linear-gradient(90deg,var(--violet2),var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
   section{padding:90px 0}
   h2{font-size:clamp(28px,4vw,42px);line-height:1.15;font-weight:800;text-align:center;margin-bottom:14px}
@@ -79,22 +81,23 @@
 
   /* features */
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:border-color .2s,transform .2s}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);transition:border-color .2s,transform .2s}
   .feat:hover{border-color:var(--violet);transform:translateY(-4px)}
-  .ico{width:48px;height:48px;border-radius:14px;background:rgba(124,58,237,.18);display:grid;place-items:center;font-size:24px;margin-bottom:18px}
+  .ico{width:48px;height:48px;border-radius:var(--radius-sm);background:rgba(124,58,237,.18);display:grid;place-items:center;color:var(--lime);margin-bottom:18px}
+  .ico .i{width:24px;height:24px}
   .feat h3{font-size:19px;margin-bottom:8px}
   .feat p{color:var(--muted);font-size:15px}
 
   /* steps */
   .steps-bg{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .step{position:relative;padding:28px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line)}
+  .step{position:relative;padding:28px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
   .step .num{font-size:44px;font-weight:800;line-height:1;margin-bottom:14px}
   .step h3{font-size:19px;margin-bottom:6px}
   .step p{color:var(--muted);font-size:15px}
 
   /* pricing */
   .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch}
-  .plan{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:32px 28px;display:flex;flex-direction:column;position:relative}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);transition:border-color .2s;padding:32px 28px;display:flex;flex-direction:column;position:relative}
   .plan.hot{border:2px solid var(--violet);background:linear-gradient(180deg,rgba(124,58,237,.15),var(--card) 40%)}
   .plan .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--violet);color:#fff;font-size:13px;font-weight:700;padding:4px 14px;border-radius:999px;white-space:nowrap}
   .plan h3{font-size:20px;margin-bottom:6px}
@@ -104,7 +107,7 @@
   .per{color:var(--muted);font-size:14px;margin-bottom:22px}
   .plan ul{list-style:none;margin-bottom:28px;flex:1}
   .plan li{padding:7px 0 7px 28px;position:relative;font-size:15px}
-  .plan li::before{content:"✓";position:absolute;left:0;color:var(--lime);font-weight:800}
+  .plan li::before{content:"";position:absolute;left:0;top:10px;width:18px;height:18px;background:var(--lime);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat}
   .plan .btn{width:100%}
   .trial{text-align:center;margin:30px auto 0;max-width:680px;color:var(--muted);overflow-wrap:anywhere}
   .trial a{color:var(--lime);font-weight:700}
@@ -112,12 +115,12 @@
 
   /* devices */
   .devices{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
-  .device{display:flex;align-items:center;gap:10px;padding:14px 22px;background:var(--card);border:1px solid var(--line);border-radius:14px;font-weight:700}
-  .device span{font-size:22px}
+  .device{display:flex;align-items:center;gap:10px;padding:14px 22px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);font-weight:700}
+  .device .i{width:22px;height:22px;color:var(--violet2)}
 
   /* faq */
   .faq{max-width:780px;margin:0 auto}
-  details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;padding:0 22px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);margin-bottom:12px;padding:0 22px}
   summary{cursor:pointer;list-style:none;padding:20px 30px 20px 0;font-weight:700;font-size:17px;position:relative}
   summary::-webkit-details-marker{display:none}
   summary::after{content:"+";position:absolute;right:0;top:16px;font-size:24px;color:var(--violet2);transition:transform .2s}
@@ -125,7 +128,7 @@
   details p{color:var(--muted);padding-bottom:20px}
 
   /* cta */
-  .cta{text-align:center;background:linear-gradient(135deg,#2a1661,#16112a);border:1px solid var(--line);border-radius:28px;padding:60px 24px}
+  .cta{text-align:center;background:linear-gradient(135deg,#2a1661,#16112a);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:60px 24px}
   .cta h2{margin-bottom:12px}
   .cta p{color:var(--muted);margin-bottom:28px;font-size:17px}
 
@@ -164,6 +167,17 @@
   .wt-small{color:var(--muted);font-size:13px;margin:6px 0}
   .wt-bot{margin-top:12px;width:100%;max-width:340px}
 
+  /* иконки и флаги */
+  .i{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em}
+  .badge .i{color:var(--lime)}
+  .btn .i{width:18px;height:18px}
+  .trial .i{color:var(--lime)}
+  .burger .i{width:28px;height:28px;vertical-align:middle}
+  .flag{white-space:nowrap}
+  .flag img{width:18px;height:12px;border-radius:2px;vertical-align:-1px;margin-right:5px}
+  .plan:hover{border-color:var(--violet2)}
+  .plan.hot:hover{border-color:var(--violet)}
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
   .reveal.on{opacity:1;transform:none}
@@ -193,6 +207,24 @@
 </style>
 </head>
 <body class="yookassa">
+<!-- Набор линейных иконок (стиль Lucide: обводка 2 px). Использование: <svg class="i"><use href="#i-имя"/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></symbol>
+  <symbol id="i-laptop" viewBox="0 0 24 24"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9"/><path d="M2 20h20l-2-4H4z"/></symbol>
+  <symbol id="i-tablet" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+</svg>
 
 <header>
   <div class="wrap nav">
@@ -204,7 +236,7 @@
       <a href="#faq">Вопросы</a>
       <a href="https://t.me/VirtualShieldPro_bot" class="btn btn-main" target="_blank" rel="noopener">Подключить</a>
     </nav>
-    <button class="burger" id="burger" aria-label="Меню">☰</button>
+    <button class="burger" id="burger" aria-label="Меню"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg></button>
   </div>
 </header>
 
@@ -213,7 +245,7 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="badge">🌍 Серверы в&nbsp;4&nbsp;странах</div>
+        <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg> Серверы в&nbsp;4&nbsp;странах</div>
         <h1>Быстрый и&nbsp;защищённый интернет — <span class="accent">с&nbsp;козырем в&nbsp;рукаве</span></h1>
         <p>Joker VPN — быстрое и&nbsp;надёжное подключение без урезания скорости. Серверы в&nbsp;Великобритании, Австрии, Финляндии и&nbsp;Швеции, своё приложение Kivin — подключитесь за&nbsp;пару минут.</p>
         <div class="hero-btns">
@@ -231,11 +263,21 @@
         <div class="playcard front">
           <div class="corner">J<br>★</div>
           <div class="center">
-            <svg class="shield" viewBox="0 0 96 110" fill="none">
-              <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a78bfa"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-              <path d="M48 4 88 18v34c0 26-17 46-40 54C25 98 8 78 8 52V18L48 4Z" fill="url(#g)"/>
-              <path d="m30 56 12 12 24-26" stroke="#a3e635" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg class="shield" viewBox="-66 -70 132 152" fill="none">
+              <defs>
+                <path id="hsh" d="M0 -62C20 -50 40 -46 58 -46V4C58 40 32 62 0 74C-32 62 -58 40 -58 4V-46C-40 -46 -20 -50 0 -62Z"/>
+                <clipPath id="hright"><rect x="0" y="-80" width="80" height="160"/></clipPath>
+              </defs>
+              <g stroke="#0b0a12" stroke-linejoin="round">
+                <use href="#hsh" fill="#7c3aed" stroke-width="8"/>
+                <g transform="scale(0.66)">
+                  <use href="#hsh" fill="#a3e635"/>
+                  <use href="#hsh" fill="#7c3aed" clip-path="url(#hright)"/>
+                  <use href="#hsh" fill="none" stroke-width="12"/>
+                </g>
+              </g>
             </svg>
+
             <div class="status"><b>Защищено</b>соединение зашифровано</div>
           </div>
           <div class="corner bottom">J<br>★</div>
@@ -250,12 +292,12 @@
       <h2 class="reveal">Почему <span class="accent">Joker VPN</span></h2>
       <p class="sub reveal">Всё, что нужно от хорошего VPN — и ничего лишнего</p>
       <div class="grid3">
-        <div class="feat reveal"><div class="ico">⚡</div><h3>Без урезания скорости</h3><p>Безлимитный трафик и никаких ограничений скорости — смотрите видео и работайте спокойно.</p></div>
-        <div class="feat reveal"><div class="ico">🛡️</div><h3>Современный протокол</h3><p>VLESS + Xray: надёжное шифрование и стабильное соединение даже в мобильных сетях.</p></div>
-        <div class="feat reveal"><div class="ico">🌍</div><h3>4 страны — одна ссылка</h3><p>🇬🇧 Великобритания, 🇦🇹 Австрия, 🇫🇮 Финляндия, 🇸🇪 Швеция. Одна ссылка-подписка открывает все страны сразу.</p></div>
-        <div class="feat reveal"><div class="ico">📲</div><h3>Своё приложение Kivin</h3><p>Приложение для Android и&nbsp;Windows: добавили ссылку — и&nbsp;подключились. Обновляется само.</p></div>
-        <div class="feat reveal"><div class="ico">🤝</div><h3>Приглашайте друзей</h3><p>Когда приглашённый друг впервые оплатит подписку, вы получите +5&nbsp;дней к&nbsp;своей подписке.</p></div>
-        <div class="feat reveal"><div class="ico">💬</div><h3>Живая поддержка</h3><p>В боте поддержки отвечает живой человек — поможем с&nbsp;настройкой на&nbsp;любом устройстве.</p></div>
+        <div class="feat reveal"><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg></div><h3>Без урезания скорости</h3><p>Безлимитный трафик и никаких ограничений скорости — смотрите видео и работайте спокойно.</p></div>
+        <div class="feat reveal"><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></div><h3>Современный протокол</h3><p>VLESS + Xray: надёжное шифрование и стабильное соединение даже в мобильных сетях.</p></div>
+        <div class="feat reveal"><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg></div><h3>4 страны — одна ссылка</h3><p><span class="flag"><img src="flags/gb.svg" alt="" width="18" height="12">Великобритания</span>, <span class="flag"><img src="flags/at.svg" alt="" width="18" height="12">Австрия</span>, <span class="flag"><img src="flags/fi.svg" alt="" width="18" height="12">Финляндия</span>, <span class="flag"><img src="flags/se.svg" alt="" width="18" height="12">Швеция</span>. Одна ссылка-подписка открывает все страны сразу.</p></div>
+        <div class="feat reveal"><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg></div><h3>Своё приложение Kivin</h3><p>Приложение для Android и&nbsp;Windows: добавили ссылку — и&nbsp;подключились. Обновляется само.</p></div>
+        <div class="feat reveal"><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg></div><h3>Приглашайте друзей</h3><p>Когда приглашённый друг впервые оплатит подписку, вы получите +5&nbsp;дней к&nbsp;своей подписке.</p></div>
+        <div class="feat reveal"><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg></div><h3>Живая поддержка</h3><p>В боте поддержки отвечает живой человек — поможем с&nbsp;настройкой на&nbsp;любом устройстве.</p></div>
       </div>
     </div>
   </section>
@@ -309,12 +351,12 @@
           <a href="https://t.me/VirtualShieldPro_bot?start=buy_365" class="btn btn-ghost" target="_blank" rel="noopener">Купить</a>
         </div>
       </div>
-      <p class="trial reveal pay-manual" style="font-size:14px">🧾 Как проходит оплата: нажмите «Купить» — откроется наш Telegram-бот с выбранным тарифом. Переведите сумму по реквизитам (Сбербанк / СБП), пришлите в бот скриншот чека — доступ откроется после проверки платежа.</p>
+      <p class="trial reveal pay-manual" style="font-size:14px"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg> Как проходит оплата: нажмите «Купить» — откроется наш Telegram-бот с выбранным тарифом. Переведите сумму по реквизитам (Сбербанк / СБП), пришлите в бот скриншот чека — доступ откроется после проверки платежа.</p>
       <!-- СБП: когда подключим СБП в ЮKassa — вернуть «картой или через СБП» здесь, в offer.html (раздел 4 п. 2, раздел 8) и privacy.html (раздел 5) -->
-      <p class="trial reveal pay-yk" style="font-size:14px">💳 Оплатите банковской картой прямо в&nbsp;боте — доступ откроется автоматически за&nbsp;минуту. Можно и&nbsp;переводом по&nbsp;реквизитам.</p>
+      <p class="trial reveal pay-yk" style="font-size:14px"><svg class="i" aria-hidden="true"><use href="#i-card"/></svg> Оплатите банковской картой прямо в&nbsp;боте — доступ откроется автоматически за&nbsp;минуту. Можно и&nbsp;переводом по&nbsp;реквизитам.</p>
       <div class="trial reveal">
         <p style="margin-bottom:14px">Не уверены? Попробуйте бесплатно.</p>
-        <a href="https://t.me/VirtualShieldPro_bot" class="btn btn-main" target="_blank" rel="noopener">🎁 7 дней бесплатно в Telegram</a>
+        <a href="https://t.me/VirtualShieldPro_bot" class="btn btn-main" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg> 7 дней бесплатно в Telegram</a>
       </div>
       <p class="trial reveal" style="font-size:13px;margin-top:10px">Оплачивая подписку или активируя пробный период, вы принимаете <a href="offer.html" style="color:var(--violet2);font-weight:500">оферту</a> и <a href="privacy.html" style="color:var(--violet2);font-weight:500">политику конфиденциальности</a>. Не заработало — <a href="offer.html#refund" style="color:var(--violet2);font-weight:500">вернём деньги</a>.</p>
 
@@ -351,15 +393,15 @@
       <h2 class="reveal">Приложение <span class="accent">Kivin</span></h2>
       <p class="sub reveal">Добавьте ссылку из&nbsp;бота — и&nbsp;подключайтесь. Обновления Kivin устанавливает сам.</p>
       <div class="devices reveal" style="margin-bottom:40px">
-        <a class="btn btn-main" href="https://github.com/joker-vpn/kivin-releases/releases/latest" target="_blank" rel="noopener">🤖 Скачать для Android</a>
-        <a class="btn btn-ghost" href="https://github.com/joker-vpn/kivin-releases/releases/latest" target="_blank" rel="noopener">💻 Скачать для Windows</a>
+        <a class="btn btn-main" href="https://github.com/joker-vpn/kivin-releases/releases/latest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-download"/></svg> Скачать для Android</a>
+        <a class="btn btn-ghost" href="https://github.com/joker-vpn/kivin-releases/releases/latest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-download"/></svg> Скачать для Windows</a>
       </div>
       <p class="sub reveal" style="margin-bottom:20px">Также работает в приложениях Happ и INCY:</p>
       <div class="devices reveal">
-        <div class="device"><span>🍏</span>iPhone / iPad</div>
-        <div class="device"><span>🤖</span>Android</div>
-        <div class="device"><span>🪟</span>Windows</div>
-        <div class="device"><span>💻</span>macOS</div>
+        <div class="device"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>iPhone / iPad</div>
+        <div class="device"><svg class="i" aria-hidden="true"><use href="#i-tablet"/></svg>Android</div>
+        <div class="device"><svg class="i" aria-hidden="true"><use href="#i-monitor"/></svg>Windows</div>
+        <div class="device"><svg class="i" aria-hidden="true"><use href="#i-laptop"/></svg>macOS</div>
       </div>
     </div>
   </section>
@@ -375,7 +417,7 @@
         <details class="reveal"><summary>Как оплатить подписку?</summary><p class="pay-yk">В боте выберите тариф и оплатите банковской картой — подписка включится автоматически за минуту. Можно и переводом по реквизитам: пришлите в бот скриншот чека, и доступ откроется после проверки.</p><p class="pay-manual">В боте выберите тариф, переведите сумму по реквизитам (Сбербанк / СБП) и пришлите скриншот чека. После проверки подписка продлится автоматически.</p></details>
         <details class="reveal"><summary>Сколько устройств можно подключить?</summary><p>Зависит от тарифа: 7&nbsp;дней — до&nbsp;2&nbsp;устройств, 1&nbsp;месяц и&nbsp;6&nbsp;месяцев — до&nbsp;5, 1&nbsp;год — до&nbsp;10, пробный период — до&nbsp;<span class="trial-devices">2</span>. Одну ссылку-подписку можно добавить на&nbsp;телефон, компьютер и&nbsp;планшет.</p></details>
         <details class="reveal"><summary>Какое приложение выбрать?</summary><p>На Android и Windows рекомендуем наше приложение Kivin. На iPhone, iPad и Mac — Happ или INCY (в российском App Store их нет, нужен Apple ID другой страны).</p></details>
-        <details class="reveal"><summary>Что делать, если VPN не подключается?</summary><p>Обновите подписку в приложении (кнопка 🔄), попробуйте другую страну или другое приложение. Не помогло — напишите в <a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener" style="color:var(--lime)">бот поддержки</a>, мы поможем.</p></details>
+        <details class="reveal"><summary>Что делать, если VPN не подключается?</summary><p>Обновите подписку в приложении (кнопка <svg class="i" aria-hidden="true"><use href="#i-refresh"/></svg>), попробуйте другую страну или другое приложение. Не помогло — напишите в <a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener" style="color:var(--lime)">бот поддержки</a>, мы поможем.</p></details>
       </div>
     </div>
   </section>
@@ -394,7 +436,7 @@
 
 <footer>
   <div class="wrap foot">
-    <div class="logo"><div class="logo-mark">J</div>Joker VPN</div>
+    <div class="logo"><img class="logo-img" src="logo.svg" alt="" width="40" height="40">Joker VPN</div>
     <div class="foot-links">
       <a href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener">Telegram-бот</a>
       <a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener">Поддержка</a>
