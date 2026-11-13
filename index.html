@@ -75,12 +75,12 @@
 
   .playcard{position:absolute;left:50%;top:50%;width:230px;height:330px;border-radius:22px;display:flex;flex-direction:column;justify-content:space-between;padding:20px}
   .playcard.back{background:var(--lime);transform:translate(-50%,-50%) rotate(12deg);box-shadow:0 30px 60px -20px rgba(0,0,0,.55)}
-  .playcard.front{background:#ecebf3;transform:translate(-50%,-50%) rotate(-8deg);box-shadow:0 30px 60px rgba(0,0,0,.55),0 0 80px rgba(124,58,237,.35);animation:float 6s ease-in-out infinite}
+  .playcard.front{-webkit-backface-visibility:hidden;backface-visibility:hidden;background:#ecebf3;transform:translate(-50%,-50%) rotate(-8deg);box-shadow:0 30px 60px rgba(0,0,0,.55),0 0 80px rgba(124,58,237,.35);animation:float 6s ease-in-out infinite}
   .playcard .corner{font-weight:800;font-size:24px;color:#0b0a12;line-height:1;text-align:center;width:24px}
   .playcard .corner .star{display:block;width:16px;height:16px;margin:4px auto 0;fill:#0b0a12}
   .playcard .corner.bottom{align-self:flex-end;transform:rotate(180deg)}
-  .playcard .center{text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 0 6px}
-  .shield{width:100px;height:115px;margin:0 auto 14px}
+  .playcard .center{text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:0}
+  .shield{width:128px;height:147px;margin:0 auto 14px;display:block;flex:none}
   .playcard .status{font-size:13px;color:#5b5770;line-height:1.35}
   .playcard .status b{color:#7c3aed;display:block;font-size:19px;font-weight:800;margin-bottom:2px}
   @keyframes float{50%{transform:translate(-50%,calc(-50% - 12px)) rotate(-8deg)}}
@@ -373,7 +373,7 @@
     .menu .btn{margin:8px 0 0}
   }
   @media (max-width:900px){
-    .playcard{width:190px;height:272px}
+    .playcard{width:210px;height:300px}
     .hero-chip{left:calc(50% - 150px);bottom:6px;font-size:12px;padding:8px 12px}
     .visual::before{width:320px;height:320px}
   }
@@ -396,8 +396,8 @@
   @media (max-width:900px){
     .hero-grid{grid-template-columns:1fr}
     .visual{height:340px;max-width:420px;margin:0 auto;width:100%}
-    .playcard{width:190px;height:272px;padding:16px}
-    .shield{width:84px;height:97px;margin-bottom:10px}
+    .playcard{width:210px;height:300px;padding:16px}
+    .shield{width:104px;height:120px;margin-bottom:10px}
     .playcard .status{font-size:12px;white-space:nowrap}
     .playcard .status b{font-size:17px}
     .grid3,.plans{grid-template-columns:1fr}
@@ -491,7 +491,7 @@
         <div class="playcard front">
           <div class="corner">J<svg class="star" viewBox="-10 -10 20 20" aria-hidden="true"><polygon points="0,-10 2.35,-3.24 9.51,-3.09 3.8,1.24 5.88,8.09 0,4 -5.88,8.09 -3.8,1.24 -9.51,-3.09 -2.35,-3.24"/></svg></div>
           <div class="center">
-            <svg class="shield" viewBox="-66 -70 132 152" fill="none">
+            <svg class="shield" viewBox="-66 -70 132 152" fill="none" shape-rendering="geometricPrecision">
               <defs>
                 <path id="hsh" d="M0 -62C20 -50 40 -46 58 -46V4C58 40 32 62 0 74C-32 62 -58 40 -58 4V-46C-40 -46 -20 -50 0 -62Z"/>
                 <clipPath id="hright"><rect x="0" y="-80" width="80" height="160"/></clipPath>
