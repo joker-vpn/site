@@ -25,7 +25,7 @@ body{font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;back
 a{color:var(--violet2)}
 header{position:sticky;top:0;z-index:50;background:rgba(11,10,18,.75);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #1f1b30}
 .nav{max-width:860px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:var(--text);text-decoration:none}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:var(--text);text-decoration:none;white-space:nowrap}
 .logo-mark{width:34px;height:34px;border-radius:10px;background:var(--violet);display:grid;place-items:center;color:var(--lime)}
 .dnav{display:flex;align-items:center;gap:6px}
 .dnav a{color:#b9b5c9;text-decoration:none;font-size:15px;font-weight:500;padding:9px 12px;border-radius:10px;display:flex;align-items:center;gap:6px}
@@ -35,8 +35,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(11,10,18,.75);-webkit-ba
 .dnav .cta:hover{color:#0b0a12}
 @media (max-width:560px){.dnav .lbl{display:none}.dnav a{padding:9px 8px}}
 h1{overflow-wrap:break-word;hyphens:auto}
-@media (max-width:340px){.logo{font-size:0;gap:0}}
-@media (max-width:380px){.logo{font-size:17px;gap:8px}.nav{padding:0 12px}.dnav{gap:2px}.dnav a{padding:8px 6px}.dnav .cta{padding:9px 10px;font-size:14px}table{font-size:13px}td,th{padding:6px}}
+@media (max-width:380px){.logo{font-size:17px;gap:8px}.nav{padding:0 12px}.dnav{gap:2px}.dnav a{padding:8px 6px}.dnav .cta{padding:9px 10px;font-size:14px}.logo-img{width:34px;height:34px}table{font-size:13px}td,th{padding:6px}}
 main{max-width:860px;margin:0 auto;padding:50px 20px 70px}
 h1{font-size:clamp(28px,5vw,40px);line-height:1.2;margin-bottom:8px}
 .date{color:var(--muted);margin-bottom:34px}
@@ -61,6 +60,8 @@ th{background:var(--card)}
 @media (max-width:480px){main{padding:36px 16px 60px}.nav{padding:0 16px}td,th{padding:8px}}
 /* Оплата через ЮKassa: включить — добавить class="yookassa" к тегу body */ .pay-yk{display:none} body.yookassa .pay-yk{display:revert} body.yookassa .pay-manual{display:none}
   .logo-img{width:40px;height:40px;flex:none;display:block}
+@media (max-width:380px){.logo-img{width:34px;height:34px}}
+@media (max-width:360px){.logo{font-size:16px;gap:6px}.logo-img{width:30px;height:30px}.dnav a:first-child{display:none}.dnav .cta{padding:8px 10px;font-size:13px}}
 </style>
 </head>
 <body class="yookassa">
