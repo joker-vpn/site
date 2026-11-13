@@ -43,18 +43,22 @@
   .sub{color:var(--muted);text-align:center;max-width:620px;margin:0 auto 50px;font-size:17px}
 
   /* header */
-  header{position:sticky;top:0;z-index:50;background:rgba(11,10,18,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  header{position:sticky;top:0;z-index:50;background:rgba(11,10,18,.75);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #1f1b30}
   .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
   .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
   .logo-mark{width:36px;height:36px;border-radius:10px;background:var(--violet);display:grid;place-items:center;color:var(--lime);font-size:20px}
-  .menu{display:flex;gap:28px;align-items:center}
-  .menu a{color:var(--muted);font-weight:500}
+  .menu{display:flex;gap:6px;align-items:center}
+  .menu a{color:#b9b5c9;font-weight:500;font-size:15px;padding:9px 14px;border-radius:10px;transition:color .15s,background .15s}
   .menu a:hover{color:var(--text)}
-  .menu .btn{padding:10px 20px;font-size:15px;color:#111}
+  .menu a.on{color:var(--text);background:#1a1630}
+  .menu a.on::after{content:"";display:block;height:2px;background:var(--lime);border-radius:2px;margin-top:4px}
+  .menu-help{display:flex;align-items:center;gap:6px}
+  .menu-help .i{width:16px;height:16px}
+  .menu .btn{padding:12px 20px;font-size:15px;color:#0b0a12;font-weight:800;border-radius:14px;margin-left:8px}
   .burger{display:none;background:none;border:0;color:var(--text);font-size:28px;cursor:pointer}
 
   /* hero */
-  .hero{padding:90px 0 70px;position:relative}
+  .hero{padding:90px 0 70px;position:relative;overflow-x:clip}
   .hero::before{content:"";position:absolute;inset:-200px 0 auto;height:700px;background:radial-gradient(600px 400px at 70% 30%,rgba(124,58,237,.35),transparent 70%),radial-gradient(500px 300px at 20% 60%,rgba(163,230,53,.12),transparent 70%);z-index:-1}
   .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
   .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:14px;margin-bottom:22px}
@@ -68,16 +72,18 @@
 
   /* card visual */
   .visual{position:relative;height:420px}
-  .playcard{position:absolute;width:230px;height:330px;border-radius:22px;background:linear-gradient(160deg,#1f1a35,#120f1f);border:1px solid var(--line);box-shadow:0 30px 60px -20px rgba(0,0,0,.7);display:flex;flex-direction:column;justify-content:space-between;padding:20px}
-  .playcard.back{left:12%;top:40px;transform:rotate(-12deg);background:repeating-linear-gradient(45deg,#2b1f55 0 12px,#231a46 12px 24px)}
-  .playcard.front{right:10%;top:20px;transform:rotate(6deg);animation:float 6s ease-in-out infinite}
-  .playcard .corner{font-weight:800;font-size:22px;color:var(--lime);line-height:1}
+
+  .playcard{position:absolute;left:50%;top:50%;width:230px;height:330px;border-radius:22px;display:flex;flex-direction:column;justify-content:space-between;padding:20px}
+  .playcard.back{background:var(--lime);transform:translate(-50%,-50%) rotate(12deg);box-shadow:0 30px 60px -20px rgba(0,0,0,.55)}
+  .playcard.front{background:#ecebf3;transform:translate(-50%,-50%) rotate(-8deg);box-shadow:0 30px 60px rgba(0,0,0,.55),0 0 80px rgba(124,58,237,.35);animation:float 6s ease-in-out infinite}
+  .playcard .corner{font-weight:800;font-size:24px;color:#0b0a12;line-height:1;text-align:center;width:24px}
+  .playcard .corner .star{display:block;width:16px;height:16px;margin:4px auto 0;fill:#0b0a12}
   .playcard .corner.bottom{align-self:flex-end;transform:rotate(180deg)}
-  .playcard .center{text-align:center}
-  .shield{width:96px;height:110px;margin:0 auto 12px}
-  .playcard .status{font-size:14px;color:var(--muted)}
-  .playcard .status b{color:var(--lime);display:block;font-size:18px}
-  @keyframes float{50%{transform:rotate(6deg) translateY(-12px)}}
+  .playcard .center{text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 0 6px}
+  .shield{width:100px;height:115px;margin:0 auto 14px}
+  .playcard .status{font-size:13px;color:#5b5770;line-height:1.35}
+  .playcard .status b{color:#7c3aed;display:block;font-size:19px;font-weight:800;margin-bottom:2px}
+  @keyframes float{50%{transform:translate(-50%,calc(-50% - 12px)) rotate(-8deg)}}
 
   /* features */
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -100,15 +106,52 @@
   .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);transition:border-color .2s;padding:32px 28px;display:flex;flex-direction:column;position:relative}
   .plan.hot{border:2px solid var(--violet);background:linear-gradient(180deg,rgba(124,58,237,.15),var(--card) 40%)}
   .plan .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--violet);color:#fff;font-size:13px;font-weight:700;padding:4px 14px;border-radius:999px;white-space:nowrap}
-  .plan h3{font-size:20px;margin-bottom:6px}
-  .plan .save{color:var(--lime);font-size:14px;font-weight:700;min-height:22px}
-  .price{font-size:44px;font-weight:800;margin:14px 0 2px}
-  .price small{font-size:17px;color:var(--muted);font-weight:500}
-  .per{color:var(--muted);font-size:14px;margin-bottom:22px}
-  .plan ul{list-style:none;margin-bottom:28px;flex:1}
-  .plan li{padding:7px 0 7px 28px;position:relative;font-size:15px}
-  .plan li::before{content:"";position:absolute;left:0;top:10px;width:18px;height:18px;background:var(--lime);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat}
-  .plan .btn{width:100%}
+  .plan{padding:24px 22px}
+  .plan h3{font-size:19px}
+  .tp-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .tp-suit{width:34px;height:34px;border-radius:10px;background:#231d38;display:grid;place-items:center;font-size:20px;color:var(--lime);flex:none}
+  .tp-tag{height:22px;margin-top:8px}
+  .tp-tag span{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+  .tp-tag .save{background:rgba(163,230,53,.12);color:var(--lime)}
+  .tp-tag .neutral{background:#231d38;color:var(--muted)}
+  .price{font-size:44px;font-weight:800;margin-top:14px;letter-spacing:-1px;line-height:1.15;white-space:nowrap}
+  .price small{font-size:20px;color:var(--muted);font-weight:600;margin-left:4px}
+  .per{color:var(--muted);font-size:13px;margin-top:2px;min-height:20px}
+  .per b{color:var(--text)}
+  .tp-sep{height:1px;background:var(--line);margin:18px 0 8px}
+  .tp-row{display:flex;align-items:center;gap:10px;font-size:14px;margin:10px 0;color:#d9d7e6;white-space:nowrap}
+  .tp-row > .i{width:20px;height:20px;color:var(--lime);vertical-align:0}
+  .tp-last{margin-bottom:22px}
+  .tp-flags{display:flex;gap:4px;margin-left:auto}
+  .tp-flags img{width:20px;height:14px;border-radius:3px;display:block}
+  .tp-dev{display:flex;gap:3px;margin-left:auto}
+  .tp-dev i{width:7px;height:12px;border-radius:2px;background:var(--lime);display:block}
+  .tp-dev i.o{background:var(--line)}
+  .tp-dev.many{gap:2px}
+  .tp-dev.many i{width:5px}
+  .plan .btn{width:100%;margin-top:auto}
+  .tp-trial{font-size:14px}
+  .tp-trial a{color:var(--lime);font-weight:700}
+  /* три шага */
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;position:relative}
+  .steps-line{position:absolute;top:34px;left:16%;right:16%;border-top:2px dashed #3b3363}
+  .st{position:relative;text-align:center;z-index:1;min-width:0}
+  .st-circle{width:68px;height:68px;margin:0 auto;border-radius:50%;background:var(--card);border:2px solid var(--violet);display:grid;place-items:center;box-shadow:0 0 30px rgba(124,58,237,.35);position:relative}
+  .st-circle .i{width:30px;height:30px;color:var(--lime);vertical-align:0}
+  .st-num{position:absolute;top:-6px;right:-6px;background:var(--lime);color:#0b0a12;font-weight:800;font-size:13px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center}
+  .st-card{margin-top:20px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 20px;min-height:180px}
+  .st-card h3{font-size:19px;margin-bottom:8px}
+  .st-card p{color:var(--muted);font-size:14px;line-height:1.55}
+  .st-chips{display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+  .st-chip{padding:8px 14px;border-radius:12px;background:#231d38;font-size:13px;font-weight:700;transition:background .15s}
+  .st-chip:hover{background:#2e2650}
+  .st-chip.main{background:var(--lime);color:#0b0a12}
+  .st-chip.main:hover{background:#b5f04f}
+  .st-link{margin-top:16px;font-family:Consolas,Menlo,monospace;font-size:12px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 10px;color:var(--muted);display:flex;justify-content:space-between;gap:8px;white-space:nowrap;overflow:hidden}
+  .st-link span{overflow:hidden;text-overflow:ellipsis}
+  .st-link b{color:var(--lime);font-family:Manrope,system-ui,sans-serif;font-size:12px}
+  .st-done{margin:34px auto 0;width:fit-content;display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;background:rgba(163,230,53,.1);border:1px solid rgba(163,230,53,.35);color:var(--lime);font-weight:700}
+  .st-done .i{vertical-align:0}
   .trial{text-align:center;margin:30px auto 0;max-width:680px;color:var(--muted);overflow-wrap:anywhere}
   .trial a{color:var(--lime);font-weight:700}
   .trial .btn-main{color:#111}
@@ -178,6 +221,134 @@
   .plan:hover{border-color:var(--violet2)}
   .plan.hot:hover{border-color:var(--violet)}
 
+  /* блок приложений */
+  .ib{width:1em;height:1em;flex:none;fill:currentColor}
+  .ka-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start}
+  .ka-main{position:relative;overflow:hidden;border-radius:24px;padding:30px;border:2px solid var(--violet);background:radial-gradient(circle at 85% 15%,rgba(124,58,237,.45),transparent 55%),linear-gradient(160deg,#211a3b,var(--card) 70%);box-shadow:0 0 50px rgba(124,58,237,.25)}
+  .ka-rec{position:absolute;top:22px;right:22px;background:var(--lime);color:#0b0a12;font-weight:800;font-size:12px;padding:6px 12px;border-radius:999px}
+  .ka-top{display:flex;gap:16px;align-items:center;padding-right:110px}
+  .ka-top img{width:72px;height:72px;border-radius:18px;box-shadow:0 10px 30px rgba(124,58,237,.5);flex:none}
+  .ka-name{font-size:26px;font-weight:800;line-height:1.2}
+  .ka-by{color:var(--muted);font-size:13px;margin-top:2px}
+  .ka-ver{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;font-size:12px}
+  .ka-ver b{background:#231d38;color:#c4b5fd;padding:3px 9px;border-radius:999px;font-weight:600}
+  .ka-list{list-style:none;margin:22px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .ka-list li{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:#d9d7e6}
+  .ka-list .i{width:20px;height:20px;color:var(--lime);vertical-align:0}
+  .ka-btns{display:flex;gap:12px}
+  .ka-btn{flex:1;display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:16px;transition:transform .15s,box-shadow .15s,border-color .15s}
+  .ka-btn:hover{transform:translateY(-2px)}
+  .ka-btn .ib{width:26px;height:26px}
+  .ka-btn b{display:block;font-weight:800;font-size:15px}
+  .ka-btn small{display:block;font-size:12px;opacity:.75}
+  .ka-btn.main{background:var(--lime);color:#0b0a12;box-shadow:0 10px 30px rgba(163,230,53,.3)}
+  .ka-btn.ghost{border:1px solid #3b3363;color:var(--text);background:var(--card)}
+  .ka-btn.ghost:hover{border-color:var(--violet2)}
+  .ka-all{margin-top:12px;font-size:13px;color:var(--muted)}
+  .ka-all a{color:#c4b5fd}
+  .ka-side h3{font-size:18px;margin:4px 0 4px}
+  .ka-hint{color:#8d88a3;font-size:13px;margin-bottom:14px}
+  .ka-app{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:14px}
+  .ka-ah{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+  .ka-ah img{width:46px;height:46px;border-radius:12px;flex:none}
+  .ka-n{font-weight:800;font-size:18px}
+  .ka-d{color:var(--muted);font-size:13px;margin-top:2px}
+  .ka-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .ka-chip{display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:12px;background:#231d38;font-size:13px;font-weight:600;color:var(--text);border:1px solid var(--line);transition:border-color .15s}
+  .ka-chip:hover{border-color:var(--violet)}
+  .ka-chip .ib{width:16px;height:16px;color:var(--violet2)}
+  .ka-chip i{font-style:normal;color:var(--muted);margin-left:2px}
+  @media (max-width:900px){.ka-grid{grid-template-columns:1fr;max-width:620px;margin:0 auto}}
+  @media (max-width:480px){.ka-main{padding:22px 18px}.ka-top{padding-right:0;padding-top:30px}.ka-rec{top:16px;right:16px}.ka-list{grid-template-columns:1fr}.ka-btns{flex-direction:column}}
+
+  /* «Почему Joker VPN» — бенто */
+  .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .bc{display:block;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;position:relative;overflow:hidden;box-shadow:var(--shadow);transition:border-color .2s,transform .2s}
+  .bc:hover{border-color:var(--violet2);transform:translateY(-3px)}
+  .bc h3{font-size:20px;margin-bottom:8px;position:relative}
+  .bc p{color:var(--muted);font-size:14px;line-height:1.55;max-width:330px;position:relative}
+  .bw2{grid-column:span 2}.bw3{grid-column:span 3}
+  .b-ic{width:42px;height:42px;border-radius:12px;background:#231d38;display:grid;place-items:center;margin-bottom:16px;color:var(--lime)}
+  .b-ic .i{width:22px;height:22px;vertical-align:0}
+  .b-speed{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .b-speed-art{text-align:right;flex:none}
+  .b-big{font-size:52px;font-weight:800;line-height:1;color:var(--lime);display:flex;align-items:baseline;gap:8px}
+  .b-speed-art .b-big{justify-content:flex-end;align-items:center}
+  .b-big .i{width:52px;height:52px;stroke-width:2.6;vertical-align:0}
+  .b-big small{font-size:18px;color:var(--muted);font-weight:600}
+  .b-bars{display:flex;align-items:flex-end;gap:7px;height:110px;margin-top:14px}
+  .b-bars i{width:16px;border-radius:5px;background:linear-gradient(180deg,var(--lime),#4d7c0f);display:block}
+  .b-shield{position:absolute;right:-20px;bottom:-24px;width:150px;pointer-events:none}
+  .b-flags{display:flex;gap:8px;margin:4px 0 16px}
+  .b-flags img{width:44px;height:30px;border-radius:6px;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+  .b-kv{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+  .b-kv img{width:46px;height:46px;border-radius:12px}
+  .b-kv b{display:block}
+  .b-kv span{display:block;color:var(--muted);font-size:12px}
+  .b-ref{margin:2px 0 10px}
+  .b-sup{display:flex;align-items:center;justify-content:space-between;gap:30px;border-color:var(--violet);background:linear-gradient(90deg,#211a3b,var(--card))}
+  .b-sup:hover{border-color:var(--violet2)}
+  .b-chat{display:flex;flex-direction:column;gap:8px;min-width:330px}
+  .b-m{padding:9px 13px;border-radius:14px;font-size:13px;max-width:260px;line-height:1.45}
+  .b-m.u{align-self:flex-end;background:var(--violet);color:#fff;border-bottom-right-radius:4px}
+  .b-m.a{background:var(--line);color:var(--text);border-bottom-left-radius:4px}
+  .b-m.a b{color:var(--lime);font-size:11px;display:block;margin-bottom:2px}
+  @media (max-width:900px){
+    .bento{grid-template-columns:1fr 1fr}
+    .bw3{grid-column:span 2}
+    .b-sup{flex-direction:column;align-items:stretch}
+    .b-chat{min-width:0}
+  }
+  @media (max-width:600px){
+    .bento{grid-template-columns:1fr}
+    .bw2,.bw3{grid-column:auto}
+    .b-speed{flex-direction:column;align-items:stretch}
+    .b-speed-art{text-align:left}
+    .b-speed-art .b-big{justify-content:flex-start}
+    .b-bars{height:80px}
+  }
+
+  /* первый экран — по макету */
+  .badge{gap:10px;padding:7px 14px;font-size:13px;color:#c9c5d8;background:#14111f}
+  .badge .fl{display:flex;gap:3px}
+  .badge .fl img{width:18px;height:12px;border-radius:2px;display:block}
+  .hero p{font-size:18px;color:#a9a5bb;line-height:1.6;max-width:540px;margin-bottom:0}
+  .hero-btns{margin-top:28px}
+  .hero p.hero-note{font-size:13px;color:#8a8699;margin-top:12px}
+  .stats{gap:14px;margin-top:34px}
+  .stat{background:#14111f;border:1px solid #241f38;border-radius:16px;padding:14px 18px;min-width:120px}
+  .stats .stat b{font-size:24px}
+  .stats .stat span{font-size:12px;color:#9a96ad}
+  .stat em{font-style:normal;color:var(--lime)}
+  .visual::before{content:"";position:absolute;left:50%;top:50%;width:420px;height:420px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(124,58,237,.35),transparent 65%);pointer-events:none}
+  .playcard{width:250px;height:350px}
+  .playcard.back{transform:translate(-50%,-50%) rotate(12deg) translate(30px,6px)}
+  .hero-chip{position:absolute;left:calc(50% - 190px);bottom:22px;display:flex;align-items:center;gap:8px;background:rgba(24,21,38,.92);border:1px solid #2a2540;border-radius:14px;padding:10px 14px;font-size:13px;color:var(--text);box-shadow:0 10px 30px rgba(0,0,0,.4);white-space:nowrap;z-index:2}
+  .hero-chip img{width:20px;height:14px;border-radius:2px;display:block}
+  @media (max-width:1060px){
+    .burger{display:block}
+    .menu{position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:4px;background:var(--bg2);border-bottom:1px solid var(--line);display:none;padding:10px 20px 20px}
+    .menu.open{display:flex}
+    .menu a{width:100%;text-align:center;justify-content:center}
+    .menu .btn{margin:8px 0 0}
+  }
+  @media (max-width:900px){
+    .playcard{width:190px;height:272px}
+    .hero-chip{left:calc(50% - 150px);bottom:6px;font-size:12px;padding:8px 12px}
+    .visual::before{width:320px;height:320px}
+  }
+  @media (max-width:480px){
+    .stats{gap:8px}
+    .stat{flex:1;min-width:0;padding:12px}
+    .stats .stat b{font-size:17px;white-space:nowrap}
+    .hero-chip{left:50%;transform:translateX(-50%);bottom:0}
+  }
+  @media (max-width:360px){
+    .stat{padding:10px 8px}
+    .stats .stat b{font-size:15px}
+    .stats .stat span{font-size:11px}
+  }
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
   .reveal.on{opacity:1;transform:none}
@@ -185,7 +356,10 @@
   @media (max-width:900px){
     .hero-grid{grid-template-columns:1fr}
     .visual{height:340px;max-width:420px;margin:0 auto;width:100%}
-    .playcard{width:190px;height:270px}
+    .playcard{width:190px;height:272px;padding:16px}
+    .shield{width:84px;height:97px;margin-bottom:10px}
+    .playcard .status{font-size:12px;white-space:nowrap}
+    .playcard .status b{font-size:17px}
     .grid3,.plans{grid-template-columns:1fr}
     .plans{max-width:440px;margin:0 auto}
     .burger{display:block}
@@ -195,7 +369,9 @@
     .menu .btn{margin-top:8px}
     section{padding:70px 0}
   }
-  @media (min-width:600px) and (max-width:900px){.plans{grid-template-columns:repeat(2,1fr);max-width:720px}}
+  @media (max-width:1100px){.plans{grid-template-columns:repeat(2,1fr);max-width:720px;margin:0 auto}}
+  @media (max-width:900px){.steps{grid-template-columns:minmax(0,1fr);max-width:440px;margin:0 auto;gap:30px}.steps-line{top:34px;bottom:34px;left:50%;right:auto;border-top:0;border-left:2px dashed #3b3363}.st-card{min-height:0}}
+  @media (max-width:600px){.plans{grid-template-columns:1fr;max-width:440px}}
   @media (max-width:480px){
     .wrap{padding:0 16px}
     .stats{gap:24px}
@@ -223,6 +399,14 @@
   <symbol id="i-tablet" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
   <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></symbol>
+  <symbol id="i-infinity" viewBox="0 0 24 24"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4zm0 0c2 2.67 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.33-6 4z"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 6-4"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="b-apple" viewBox="0 0 24 24"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8s-1.8-.8-3-.8C7 7.3 5.6 8.2 4.8 9.6c-1.6 2.8-.4 6.9 1.1 9.2.8 1.1 1.7 2.3 2.9 2.3s1.6-.7 3-.7 1.8.7 3 .7 2-1.1 2.8-2.2c.9-1.3 1.2-2.5 1.2-2.6 0 0-2.4-.9-2.4-3.7zM14.2 5.6c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.2z"/></symbol>
+  <symbol id="b-android" viewBox="0 0 24 24"><path d="M7 9h10v8a1 1 0 0 1-1 1h-1v3h-2v-3h-2v3H9v-3H8a1 1 0 0 1-1-1zM4.5 9a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0zm13 0a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0zM7 8a5 5 0 0 1 10 0z"/></symbol>
+  <symbol id="b-windows" viewBox="0 0 24 24"><path d="M3 5.5 10 4.5v7H3zm8-1.2L21 3v8.5H11zM3 12.5h7v7L3 18.5zm8 0h10V21l-10-1.4z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
   <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
 </svg>
 
@@ -233,7 +417,9 @@
       <a href="#features">Преимущества</a>
       <a href="#how">Как подключить</a>
       <a href="#pricing">Тарифы</a>
+      <a href="#apps">Приложения</a>
       <a href="#faq">Вопросы</a>
+      <a href="https://t.me/JokerVPN_help_bot" class="menu-help" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>Поддержка</a>
       <a href="https://t.me/VirtualShieldPro_bot" class="btn btn-main" target="_blank" rel="noopener">Подключить</a>
     </nav>
     <button class="burger" id="burger" aria-label="Меню"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg></button>
@@ -245,23 +431,24 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg> Серверы в&nbsp;4&nbsp;странах</div>
-        <h1>Быстрый и&nbsp;защищённый интернет — <span class="accent">с&nbsp;козырем в&nbsp;рукаве</span></h1>
-        <p>Joker VPN — быстрое и&nbsp;надёжное подключение без урезания скорости. Серверы в&nbsp;Великобритании, Австрии, Финляндии и&nbsp;Швеции, своё приложение Kivin — подключитесь за&nbsp;пару минут.</p>
+        <div class="badge"><span class="fl"><img src="flags/gb.svg" alt="" width="18" height="12"><img src="flags/at.svg" alt="" width="18" height="12"><img src="flags/fi.svg" alt="" width="18" height="12"><img src="flags/se.svg" alt="" width="18" height="12"></span>Серверы в&nbsp;4&nbsp;странах Европы</div>
+        <h1>Быстрый и&nbsp;защищённый интернет —<br> <span class="accent">с&nbsp;козырем в&nbsp;рукаве</span></h1>
+        <p>Полная скорость, все страны в&nbsp;одной ссылке и&nbsp;своё приложение Kivin. Подключиться можно за&nbsp;пару минут.</p>
         <div class="hero-btns">
           <a href="https://t.me/VirtualShieldPro_bot" class="btn btn-main" target="_blank" rel="noopener">Попробовать бесплатно</a>
           <a href="#pricing" class="btn btn-ghost">Смотреть тарифы</a>
         </div>
+        <p class="hero-note">Без привязки карты, один раз на&nbsp;аккаунт</p>
         <div class="stats">
-          <div><b>4&nbsp;страны</b><span>серверы в&nbsp;Европе</span></div>
-          <div><b>7&nbsp;дней</b><span>пробный период</span></div>
-          <div><b>от&nbsp;183&nbsp;₽</b><span>в&nbsp;месяц</span></div>
+          <div class="stat"><b>7&nbsp;дней</b><span>бесплатно</span></div>
+          <div class="stat"><b><em>∞</em> трафик</b><span>без лимитов</span></div>
+          <div class="stat"><b>от&nbsp;183&nbsp;₽</b><span>в&nbsp;месяц</span></div>
         </div>
       </div>
       <div class="visual" aria-hidden="true">
         <div class="playcard back"></div>
         <div class="playcard front">
-          <div class="corner">J<br>★</div>
+          <div class="corner">J<svg class="star" viewBox="-10 -10 20 20" aria-hidden="true"><polygon points="0,-10 2.35,-3.24 9.51,-3.09 3.8,1.24 5.88,8.09 0,4 -5.88,8.09 -3.8,1.24 -9.51,-3.09 -2.35,-3.24"/></svg></div>
           <div class="center">
             <svg class="shield" viewBox="-66 -70 132 152" fill="none">
               <defs>
@@ -280,8 +467,9 @@
 
             <div class="status"><b>Защищено</b>соединение зашифровано</div>
           </div>
-          <div class="corner bottom">J<br>★</div>
+          <div class="corner bottom">J<svg class="star" viewBox="-10 -10 20 20" aria-hidden="true"><polygon points="0,-10 2.35,-3.24 9.51,-3.09 3.8,1.24 5.88,8.09 0,4 -5.88,8.09 -3.8,1.24 -9.51,-3.09 -2.35,-3.24"/></svg></div>
         </div>
+        <div class="hero-chip"><img src="flags/gb.svg" alt="" width="20" height="14">Великобритания · подключено</div>
       </div>
     </div>
   </section>
@@ -290,14 +478,29 @@
   <section id="features">
     <div class="wrap">
       <h2 class="reveal">Почему <span class="accent">Joker VPN</span></h2>
-      <p class="sub reveal">Всё, что нужно от хорошего VPN — и ничего лишнего</p>
-      <div class="grid3">
-        <div class="feat reveal"><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg></div><h3>Без урезания скорости</h3><p>Безлимитный трафик и никаких ограничений скорости — смотрите видео и работайте спокойно.</p></div>
-        <div class="feat reveal"><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></div><h3>Современный протокол</h3><p>VLESS + Xray: надёжное шифрование и стабильное соединение даже в мобильных сетях.</p></div>
-        <div class="feat reveal"><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg></div><h3>4 страны — одна ссылка</h3><p><span class="flag"><img src="flags/gb.svg" alt="" width="18" height="12">Великобритания</span>, <span class="flag"><img src="flags/at.svg" alt="" width="18" height="12">Австрия</span>, <span class="flag"><img src="flags/fi.svg" alt="" width="18" height="12">Финляндия</span>, <span class="flag"><img src="flags/se.svg" alt="" width="18" height="12">Швеция</span>. Одна ссылка-подписка открывает все страны сразу.</p></div>
-        <div class="feat reveal"><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg></div><h3>Своё приложение Kivin</h3><p>Приложение для Android и&nbsp;Windows: добавили ссылку — и&nbsp;подключились. Обновляется само.</p></div>
-        <div class="feat reveal"><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg></div><h3>Приглашайте друзей</h3><p>Когда приглашённый друг впервые оплатит подписку, вы получите +5&nbsp;дней к&nbsp;своей подписке.</p></div>
-        <div class="feat reveal"><div class="ico"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg></div><h3>Живая поддержка</h3><p>В боте поддержки отвечает живой человек — поможем с&nbsp;настройкой на&nbsp;любом устройстве.</p></div>
+      <p class="sub reveal">Всё нужное от хорошего VPN — и&nbsp;ничего лишнего</p>
+      <div class="bento">
+        <div class="bc bw2 b-speed reveal">
+          <div><div class="b-ic"><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg></div><h3>Полная скорость</h3><p>Трафик без лимитов, скорость никто не&nbsp;урезает. Смотрите видео и&nbsp;созванивайтесь сколько угодно.</p></div>
+          <div class="b-speed-art" aria-hidden="true"><div class="b-big"><svg class="i" aria-hidden="true"><use href="#i-infinity"/></svg> <small>трафик</small></div><div class="b-bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:40%"></i><i style="height:62%"></i><i style="height:58%"></i><i style="height:78%"></i><i style="height:72%"></i><i style="height:92%"></i><i style="height:100%"></i></div></div>
+        </div>
+        <div class="bc b-prot reveal">
+          <div class="b-ic"><svg class="i" aria-hidden="true"><use href="#i-lock"/></svg></div><h3>Надёжная защита</h3><p>Современный протокол VLESS&nbsp;+&nbsp;Reality шифрует соединение и&nbsp;стабильно работает даже в&nbsp;мобильной сети.</p>
+          <svg class="b-shield" viewBox="-66 -70 132 152" aria-hidden="true"><path d="M0 -62C20 -50 40 -46 58 -46V4C58 40 32 62 0 74C-32 62 -58 40 -58 4V-46C-40 -46 -20 -50 0 -62Z" fill="#7c3aed" opacity=".25"/></svg>
+        </div>
+        <div class="bc reveal">
+          <div class="b-flags"><img src="flags/gb.svg" alt="" width="44" height="30"><img src="flags/at.svg" alt="" width="44" height="30"><img src="flags/fi.svg" alt="" width="44" height="30"><img src="flags/se.svg" alt="" width="44" height="30"></div><h3>4 страны — одна ссылка</h3><p>Великобритания, Австрия, Финляндия и&nbsp;Швеция. Добавьте ссылку-подписку —&nbsp;и все страны сразу в&nbsp;приложении.</p>
+        </div>
+        <div class="bc reveal">
+          <div class="b-kv"><img src="apps/kivin.png" alt="" width="46" height="46"><div><b>Kivin</b><span>Android и&nbsp;Windows</span></div></div><h3>Своё приложение</h3><p>Подключение в&nbsp;одно касание прямо из&nbsp;бота. Обновления приходят автоматически.</p>
+        </div>
+        <div class="bc reveal">
+          <div class="b-big b-ref">+5 <small>дней</small></div><h3>Приглашайте друзей</h3><p>Друг впервые оплачивает подписку по&nbsp;вашей ссылке —&nbsp;бонусные дни получаете вы.</p>
+        </div>
+        <a class="bc bw3 b-sup reveal" href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener">
+          <div><div class="b-ic"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg></div><h3>Живая поддержка</h3><p>Отвечает человек, а&nbsp;не робот. Поможем настроить VPN на&nbsp;телефоне, компьютере или планшете.</p></div>
+          <div class="b-chat" aria-hidden="true"><div class="b-m u">Как подключить второй телефон?</div><div class="b-m a"><b>Поддержка Joker VPN</b>Сейчас всё настроим. У&nbsp;вас Android или iPhone?</div></div>
+        </a>
       </div>
     </div>
   </section>
@@ -307,11 +510,25 @@
     <div class="wrap">
       <h2 class="reveal">Подключение за 3 шага</h2>
       <p class="sub reveal">Никаких сложных инструкций — справится любой</p>
-      <div class="grid3">
-        <div class="step reveal"><div class="num accent">01</div><h3>Откройте бота</h3><p>Откройте наш Telegram-бот, нажмите «Начать» и&nbsp;включите пробный период на&nbsp;7&nbsp;дней или выберите тариф.</p></div>
-        <div class="step reveal"><div class="num accent">02</div><h3>Установите приложение</h3><p>Kivin для Android и Windows, а для iPhone, Mac и других устройств — Happ или INCY.</p></div>
-        <div class="step reveal"><div class="num accent">03</div><h3>Вставьте ссылку</h3><p>Скопируйте ссылку-подписку в&nbsp;разделе «Мой профиль», добавьте её в&nbsp;приложение — и&nbsp;подключайтесь.</p></div>
+      <div class="steps">
+        <div class="steps-line" aria-hidden="true"></div>
+        <div class="st reveal">
+          <div class="st-circle"><span class="st-num">1</span><svg class="i" aria-hidden="true"><use href="#i-send"/></svg></div>
+          <div class="st-card"><h3>Откройте бота</h3><p>Нажмите «Начать» и&nbsp;включите пробный период на&nbsp;7&nbsp;дней или выберите тариф.</p>
+            <div class="st-chips"><a class="st-chip main" href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener">Открыть бота</a></div></div>
+        </div>
+        <div class="st reveal">
+          <div class="st-circle"><span class="st-num">2</span><svg class="i" aria-hidden="true"><use href="#i-download"/></svg></div>
+          <div class="st-card"><h3>Установите приложение</h3><p>Kivin для Android и&nbsp;Windows, для iPhone и&nbsp;Mac — Happ или INCY.</p>
+            <div class="st-chips"><a class="st-chip" href="https://github.com/joker-vpn/kivin-releases/releases/latest" target="_blank" rel="noopener">Kivin</a><a class="st-chip" href="#apps">Happ</a><a class="st-chip" href="#apps">INCY</a></div></div>
+        </div>
+        <div class="st reveal">
+          <div class="st-circle"><span class="st-num">3</span><svg class="i" aria-hidden="true"><use href="#i-link"/></svg></div>
+          <div class="st-card"><h3>Вставьте ссылку</h3><p>Скопируйте ссылку-подписку в&nbsp;разделе «Мой профиль» и&nbsp;добавьте её в&nbsp;приложение.</p>
+            <div class="st-link" aria-hidden="true"><span>https://…/sub/••••••</span><b>Скопировано ✓</b></div></div>
+        </div>
       </div>
+      <div class="st-done reveal"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg> Готово — вы защищены</div>
     </div>
   </section>
 
@@ -322,40 +539,60 @@
       <p class="sub reveal">Чем дольше период — тем выгоднее. Тарифы отличаются только сроком и&nbsp;числом устройств.</p>
       <div class="plans">
         <div class="plan reveal">
-          <h3>7 дней</h3><div class="save"></div>
+          <div class="tp-head"><h3>7 дней</h3><span class="tp-suit" aria-hidden="true">♣︎</span></div>
+          <div class="tp-tag"><span class="neutral">Попробовать</span></div>
           <div class="price">100&nbsp;<small>₽</small></div>
-          <div class="per">на&nbsp;неделю — без долгих обязательств</div>
-          <ul><li>Безлимитный трафик</li><li>Все 4&nbsp;страны</li><li>До 2&nbsp;устройств</li><li>Живая поддержка</li></ul>
+          <div class="per">≈&nbsp;<b>14&nbsp;₽</b> в&nbsp;день</div>
+          <div class="tp-sep"></div>
+          <div class="tp-row"><svg class="i" aria-hidden="true"><use href="#i-infinity"/></svg><span>Безлимитный трафик</span></div>
+          <div class="tp-row"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg><span>Все страны</span><span class="tp-flags"><img src="flags/gb.svg" alt="" width="20" height="14"><img src="flags/at.svg" alt="" width="20" height="14"><img src="flags/fi.svg" alt="" width="20" height="14"><img src="flags/se.svg" alt="" width="20" height="14"></span></div>
+          <div class="tp-row"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>До 2&nbsp;устройств</span><span class="tp-dev" aria-hidden="true"><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i></span></div>
+          <div class="tp-row tp-last"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg><span>Живая поддержка</span></div>
           <a href="https://t.me/VirtualShieldPro_bot?start=buy_7" class="btn btn-ghost" target="_blank" rel="noopener">Купить</a>
         </div>
         <div class="plan reveal">
-          <h3>1 месяц</h3><div class="save"></div>
+          <div class="tp-head"><h3>1 месяц</h3><span class="tp-suit" aria-hidden="true">♦︎</span></div>
+          <div class="tp-tag"><span class="neutral">Базовый</span></div>
           <div class="price">250&nbsp;<small>₽</small></div>
-          <div class="per">250&nbsp;₽ в&nbsp;месяц</div>
-          <ul><li>Безлимитный трафик</li><li>Все 4&nbsp;страны</li><li>До 5&nbsp;устройств</li><li>Живая поддержка</li></ul>
+          <div class="per">≈&nbsp;<b>8&nbsp;₽</b> в&nbsp;день</div>
+          <div class="tp-sep"></div>
+          <div class="tp-row"><svg class="i" aria-hidden="true"><use href="#i-infinity"/></svg><span>Безлимитный трафик</span></div>
+          <div class="tp-row"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg><span>Все страны</span><span class="tp-flags"><img src="flags/gb.svg" alt="" width="20" height="14"><img src="flags/at.svg" alt="" width="20" height="14"><img src="flags/fi.svg" alt="" width="20" height="14"><img src="flags/se.svg" alt="" width="20" height="14"></span></div>
+          <div class="tp-row"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>До 5&nbsp;устройств</span><span class="tp-dev" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+          <div class="tp-row tp-last"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg><span>Живая поддержка</span></div>
           <a href="https://t.me/VirtualShieldPro_bot?start=buy_30" class="btn btn-ghost" target="_blank" rel="noopener">Купить</a>
         </div>
         <div class="plan hot reveal">
           <div class="tag">Популярный</div>
-          <h3>6 месяцев</h3><div class="save">Экономия 13%</div>
+          <div class="tp-head"><h3>6 месяцев</h3><span class="tp-suit" aria-hidden="true">♥︎</span></div>
+          <div class="tp-tag"><span class="save">Экономия 13%</span></div>
           <div class="price">1&nbsp;300&nbsp;<small>₽</small></div>
-          <div class="per">≈&nbsp;217&nbsp;₽ в&nbsp;месяц</div>
-          <ul><li>Безлимитный трафик</li><li>Все 4&nbsp;страны</li><li>До 5&nbsp;устройств</li><li>Живая поддержка</li></ul>
+          <div class="per">≈&nbsp;<b>217&nbsp;₽</b> в&nbsp;месяц</div>
+          <div class="tp-sep"></div>
+          <div class="tp-row"><svg class="i" aria-hidden="true"><use href="#i-infinity"/></svg><span>Безлимитный трафик</span></div>
+          <div class="tp-row"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg><span>Все страны</span><span class="tp-flags"><img src="flags/gb.svg" alt="" width="20" height="14"><img src="flags/at.svg" alt="" width="20" height="14"><img src="flags/fi.svg" alt="" width="20" height="14"><img src="flags/se.svg" alt="" width="20" height="14"></span></div>
+          <div class="tp-row"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>До 5&nbsp;устройств</span><span class="tp-dev" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+          <div class="tp-row tp-last"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg><span>Живая поддержка</span></div>
           <a href="https://t.me/VirtualShieldPro_bot?start=buy_180" class="btn btn-main" target="_blank" rel="noopener">Купить</a>
         </div>
         <div class="plan reveal">
-          <h3>1 год</h3><div class="save">Экономия 27%</div>
+          <div class="tp-head"><h3>1 год</h3><span class="tp-suit" aria-hidden="true">♠︎</span></div>
+          <div class="tp-tag"><span class="save">Экономия 27%</span></div>
           <div class="price">2&nbsp;200&nbsp;<small>₽</small></div>
-          <div class="per">≈&nbsp;183&nbsp;₽ в&nbsp;месяц</div>
-          <ul><li>Безлимитный трафик</li><li>Все 4&nbsp;страны</li><li>До 10&nbsp;устройств</li><li>Живая поддержка</li></ul>
+          <div class="per">≈&nbsp;<b>6&nbsp;₽</b> в&nbsp;день</div>
+          <div class="tp-sep"></div>
+          <div class="tp-row"><svg class="i" aria-hidden="true"><use href="#i-infinity"/></svg><span>Безлимитный трафик</span></div>
+          <div class="tp-row"><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg><span>Все страны</span><span class="tp-flags"><img src="flags/gb.svg" alt="" width="20" height="14"><img src="flags/at.svg" alt="" width="20" height="14"><img src="flags/fi.svg" alt="" width="20" height="14"><img src="flags/se.svg" alt="" width="20" height="14"></span></div>
+          <div class="tp-row"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>До 10&nbsp;устройств</span><span class="tp-dev many" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+          <div class="tp-row tp-last"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg><span>Живая поддержка</span></div>
           <a href="https://t.me/VirtualShieldPro_bot?start=buy_365" class="btn btn-ghost" target="_blank" rel="noopener">Купить</a>
         </div>
       </div>
+      <p class="trial reveal tp-trial">Не уверены? <a href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener">7&nbsp;дней бесплатно</a> — один раз, без привязки карты</p>
       <p class="trial reveal pay-manual" style="font-size:14px"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg> Как проходит оплата: нажмите «Купить» — откроется наш Telegram-бот с выбранным тарифом. Переведите сумму по реквизитам (Сбербанк / СБП), пришлите в бот скриншот чека — доступ откроется после проверки платежа.</p>
       <!-- СБП: когда подключим СБП в ЮKassa — вернуть «картой или через СБП» здесь, в offer.html (раздел 4 п. 2, раздел 8) и privacy.html (раздел 5) -->
       <p class="trial reveal pay-yk" style="font-size:14px"><svg class="i" aria-hidden="true"><use href="#i-card"/></svg> Оплатите банковской картой прямо в&nbsp;боте — доступ откроется автоматически за&nbsp;минуту. Можно и&nbsp;переводом по&nbsp;реквизитам.</p>
       <div class="trial reveal">
-        <p style="margin-bottom:14px">Не уверены? Попробуйте бесплатно.</p>
         <a href="https://t.me/VirtualShieldPro_bot" class="btn btn-main" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg> 7 дней бесплатно в Telegram</a>
       </div>
       <p class="trial reveal" style="font-size:13px;margin-top:10px">Оплачивая подписку или активируя пробный период, вы принимаете <a href="offer.html" style="color:var(--violet2);font-weight:500">оферту</a> и <a href="privacy.html" style="color:var(--violet2);font-weight:500">политику конфиденциальности</a>. Не заработало — <a href="offer.html#refund" style="color:var(--violet2);font-weight:500">вернём деньги</a>.</p>
@@ -387,21 +624,46 @@
     </div>
   </section>
 
-  <!-- УСТРОЙСТВА -->
-  <section style="padding-top:0">
+  <!-- ПРИЛОЖЕНИЯ -->
+  <section id="apps" style="padding-top:0">
     <div class="wrap">
       <h2 class="reveal">Приложение <span class="accent">Kivin</span></h2>
-      <p class="sub reveal">Добавьте ссылку из&nbsp;бота — и&nbsp;подключайтесь. Обновления Kivin устанавливает сам.</p>
-      <div class="devices reveal" style="margin-bottom:40px">
-        <a class="btn btn-main" href="https://github.com/joker-vpn/kivin-releases/releases/latest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-download"/></svg> Скачать для Android</a>
-        <a class="btn btn-ghost" href="https://github.com/joker-vpn/kivin-releases/releases/latest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-download"/></svg> Скачать для Windows</a>
-      </div>
-      <p class="sub reveal" style="margin-bottom:20px">Также работает в приложениях Happ и INCY:</p>
-      <div class="devices reveal">
-        <div class="device"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>iPhone / iPad</div>
-        <div class="device"><svg class="i" aria-hidden="true"><use href="#i-tablet"/></svg>Android</div>
-        <div class="device"><svg class="i" aria-hidden="true"><use href="#i-monitor"/></svg>Windows</div>
-        <div class="device"><svg class="i" aria-hidden="true"><use href="#i-laptop"/></svg>macOS</div>
+      <p class="sub reveal">Наше приложение, сделанное специально для Joker VPN</p>
+      <div class="ka-grid">
+        <div class="ka-main reveal">
+          <div class="ka-rec">Рекомендуем</div>
+          <div class="ka-top">
+            <img src="apps/kivin.png" alt="" width="72" height="72">
+            <div>
+              <div class="ka-name">Kivin</div>
+              <div class="ka-by">by Joker VPN · Android и&nbsp;Windows</div>
+              <div class="ka-ver"><b>v0.3.0</b><b>обновлено 12.11.2026</b></div>
+            </div>
+          </div>
+          <ul class="ka-list">
+            <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg><span>Подключение в&nbsp;одно касание — прямо из&nbsp;бота</span></li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-refresh"/></svg><span>Обновления приходят автоматически</span></li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-globe"/></svg><span>Все страны — в&nbsp;одном списке</span></li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span>Бесплатно для клиентов Joker VPN</span></li>
+          </ul>
+          <div class="ka-btns">
+            <a class="ka-btn main" href="https://github.com/joker-vpn/kivin-releases/releases/download/v0.3.0/Kivin-0.3.0-arm64-v8a.apk" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-android"/></svg><span><b>Скачать для Android</b><small>APK · 33&nbsp;МБ</small></span></a>
+            <a class="ka-btn ghost" href="https://github.com/joker-vpn/kivin-releases/releases/download/v0.3.0/Kivin-0.3.0-windows-x64-setup.exe" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-windows"/></svg><span><b>Скачать для Windows</b><small>Установщик · 23&nbsp;МБ</small></span></a>
+          </div>
+          <p class="ka-all">Нужна другая сборка? <a href="https://github.com/joker-vpn/kivin-releases/releases/latest" target="_blank" rel="noopener">Все файлы выпуска на&nbsp;GitHub</a></p>
+        </div>
+        <div class="ka-side reveal">
+          <h3>Другие приложения</h3>
+          <p class="ka-hint">Для iPhone и&nbsp;Mac — или как запасной вариант</p>
+          <div class="ka-app">
+            <div class="ka-ah"><img src="apps/happ.png" alt="" width="46" height="46"><div><div class="ka-n">Happ</div><div class="ka-d">Работает на&nbsp;всех устройствах</div></div></div>
+            <div class="ka-chips"><a class="ka-chip" href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-apple"/></svg> iPhone <i>App Store</i></a><a class="ka-chip" href="https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ.apk" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-android"/></svg> Android <i>APK</i></a><a class="ka-chip" href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-windows"/></svg> Windows</a><a class="ka-chip" href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.macOS.universal.dmg" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-apple"/></svg> macOS</a></div>
+          </div>
+          <div class="ka-app">
+            <div class="ka-ah"><img src="apps/incy.png" alt="" width="46" height="46"><div><div class="ka-n">INCY</div><div class="ka-d">Простой и&nbsp;удобный на&nbsp;iPhone и&nbsp;Mac</div></div></div>
+            <div class="ka-chips"><a class="ka-chip" href="https://apps.apple.com/us/app/incy/id6756943388" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-apple"/></svg> iPhone / Mac <i>App Store</i></a><a class="ka-chip" href="https://play.google.com/store/apps/details?id=llc.itdev.incy" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-android"/></svg> Android <i>Google Play</i></a><a class="ka-chip" href="https://github.com/INCY-DEV/incy-platforms/releases/latest" target="_blank" rel="noopener"><svg class="ib" aria-hidden="true"><use href="#b-windows"/></svg> Windows</a></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -468,6 +730,15 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Подсветка пункта меню для раздела, который сейчас на экране
+  const navLinks = [...menu.querySelectorAll('a[href^="#"]')];
+  const secIO = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    navLinks.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  navLinks.forEach(a => { const sec = document.querySelector(a.getAttribute('href')); if (sec) secIO.observe(sec); });
+  new IntersectionObserver(es => { if (es[0].isIntersecting) navLinks.forEach(a => a.classList.remove('on')); }).observe(document.querySelector('.hero'));
 
   // ===== Пробная ссылка на сайте =====
   // Проверка «Я не робот» — ALTCHA (proof-of-work): браузер решает задачу с нашего сервера,
