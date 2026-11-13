@@ -1,0 +1,5 @@
+# Служебное — не публикуется
+.claude/
+*.tmp
+Thumbs.db
+desktop.ini

@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joker VPN — быстрый и надёжный VPN</title>
+<meta name="description" content="Joker VPN — быстрый VPN без урезания скорости: серверы в Лондоне, Австрии, Финляндии и Швеции, своё приложение Kivin, 7 дней бесплатно.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237c3aed'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='%23a3e635' font-family='Arial' font-weight='bold'%3EJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0a12; --bg2:#13111d; --card:#181526; --line:#2a2540;
+    --text:#ecebf3; --muted:#9a96ad;
+    --violet:#7c3aed; --violet2:#a78bfa; --lime:#a3e635;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;border:0;transition:transform .15s,box-shadow .15s,background .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-main{background:var(--lime);color:#111;box-shadow:0 8px 30px -8px rgba(163,230,53,.6)}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--violet2)}
+  .accent{background:linear-gradient(90deg,var(--violet2),var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
+  section{padding:90px 0}
+  h2{font-size:clamp(28px,4vw,42px);line-height:1.15;font-weight:800;text-align:center;margin-bottom:14px}
+  .sub{color:var(--muted);text-align:center;max-width:620px;margin:0 auto 50px;font-size:17px}
+
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(11,10,18,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
+  .logo-mark{width:36px;height:36px;border-radius:10px;background:var(--violet);display:grid;place-items:center;color:var(--lime);font-size:20px}
+  .menu{display:flex;gap:28px;align-items:center}
+  .menu a{color:var(--muted);font-weight:500}
+  .menu a:hover{color:var(--text)}
+  .menu .btn{padding:10px 20px;font-size:15px;color:#111}
+  .burger{display:none;background:none;border:0;color:var(--text);font-size:28px;cursor:pointer}
+
+  /* hero */
+  .hero{padding:90px 0 70px;position:relative}
+  .hero::before{content:"";position:absolute;inset:-200px 0 auto;height:700px;background:radial-gradient(600px 400px at 70% 30%,rgba(124,58,237,.35),transparent 70%),radial-gradient(500px 300px at 20% 60%,rgba(163,230,53,.12),transparent 70%);z-index:-1}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+  .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:14px;margin-bottom:22px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime)}
+  .hero h1{font-size:clamp(36px,6vw,64px);line-height:1.05;font-weight:800;margin-bottom:20px}
+  .hero p{color:var(--muted);font-size:19px;max-width:520px;margin-bottom:32px}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+  .stats{display:flex;gap:36px;margin-top:44px;flex-wrap:wrap}
+  .stats b{display:block;font-size:28px;font-weight:800}
+  .stats span{color:var(--muted);font-size:14px}
+
+  /* card visual */
+  .visual{position:relative;height:420px}
+  .playcard{position:absolute;width:230px;height:330px;border-radius:22px;background:linear-gradient(160deg,#1f1a35,#120f1f);border:1px solid var(--line);box-shadow:0 30px 60px -20px rgba(0,0,0,.7);display:flex;flex-direction:column;justify-content:space-between;padding:20px}
+  .playcard.back{left:12%;top:40px;transform:rotate(-12deg);background:repeating-linear-gradient(45deg,#2b1f55 0 12px,#231a46 12px 24px)}
+  .playcard.front{right:10%;top:20px;transform:rotate(6deg);animation:float 6s ease-in-out infinite}
+  .playcard .corner{font-weight:800;font-size:22px;color:var(--lime);line-height:1}
+  .playcard .corner.bottom{align-self:flex-end;transform:rotate(180deg)}
+  .playcard .center{text-align:center}
+  .shield{width:96px;height:110px;margin:0 auto 12px}
+  .playcard .status{font-size:14px;color:var(--muted)}
+  .playcard .status b{color:var(--lime);display:block;font-size:18px}
+  @keyframes float{50%{transform:rotate(6deg) translateY(-12px)}}
+
+  /* features */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:border-color .2s,transform .2s}
+  .feat:hover{border-color:var(--violet);transform:translateY(-4px)}
+  .ico{width:48px;height:48px;border-radius:14px;background:rgba(124,58,237,.18);display:grid;place-items:center;font-size:24px;margin-bottom:18px}
+  .feat h3{font-size:19px;margin-bottom:8px}
+  .feat p{color:var(--muted);font-size:15px}
+
+  /* steps */
+  .steps-bg{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .step{position:relative;padding:28px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line)}
+  .step .num{font-size:44px;font-weight:800;line-height:1;margin-bottom:14px}
+  .step h3{font-size:19px;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:15px}
+
+  /* pricing */
+  .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:32px 28px;display:flex;flex-direction:column;position:relative}
+  .plan.hot{border:2px solid var(--violet);background:linear-gradient(180deg,rgba(124,58,237,.15),var(--card) 40%)}
+  .plan .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--violet);color:#fff;font-size:13px;font-weight:700;padding:4px 14px;border-radius:999px;white-space:nowrap}
+  .plan h3{font-size:20px;margin-bottom:6px}
+  .plan .save{color:var(--lime);font-size:14px;font-weight:700;min-height:22px}
+  .price{font-size:44px;font-weight:800;margin:14px 0 2px}
+  .price small{font-size:17px;color:var(--muted);font-weight:500}
+  .per{color:var(--muted);font-size:14px;margin-bottom:22px}
+  .plan ul{list-style:none;margin-bottom:28px;flex:1}
+  .plan li{padding:7px 0 7px 28px;position:relative;font-size:15px}
+  .plan li::before{content:"✓";position:absolute;left:0;color:var(--lime);font-weight:800}
+  .plan .btn{width:100%}
+  .trial{text-align:center;margin-top:30px;color:var(--muted)}
+  .trial a{color:var(--lime);font-weight:700}
+
+  /* devices */
+  .devices{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+  .device{display:flex;align-items:center;gap:10px;padding:14px 22px;background:var(--card);border:1px solid var(--line);border-radius:14px;font-weight:700}
+  .device span{font-size:22px}
+
+  /* faq */
+  .faq{max-width:780px;margin:0 auto}
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;padding:0 22px}
+  summary{cursor:pointer;list-style:none;padding:20px 30px 20px 0;font-weight:700;font-size:17px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:0;top:16px;font-size:24px;color:var(--violet2);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--muted);padding-bottom:20px}
+
+  /* cta */
+  .cta{text-align:center;background:linear-gradient(135deg,#2a1661,#16112a);border:1px solid var(--line);border-radius:28px;padding:60px 24px}
+  .cta h2{margin-bottom:12px}
+  .cta p{color:var(--muted);margin-bottom:28px;font-size:17px}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:14px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .foot-links{display:flex;gap:22px;flex-wrap:wrap}
+  .foot-links a:hover{color:var(--text)}
+
+  /* пробная ссылка на сайте */
+  .webtrial{max-width:620px;margin:44px auto 0;padding:26px 24px;border:1px dashed var(--line);border-radius:var(--radius);text-align:center;background:rgba(24,21,38,.5)}
+  .webtrial h3{font-size:18px;margin-bottom:6px}
+  .wt-muted{color:var(--muted);font-size:15px;margin-bottom:18px}
+  .webtrial form{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:6px}
+  .wt-robot{display:flex;align-items:center;gap:12px;width:100%;max-width:300px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);font:inherit;font-weight:500;cursor:pointer;text-align:left}
+  .wt-robot:hover{border-color:var(--violet2)}
+  .wt-robot[disabled]{cursor:default}
+  .wt-box{width:22px;height:22px;flex:none;border:2px solid var(--muted);border-radius:6px;display:grid;place-items:center}
+  .wt-robot.busy .wt-box{border-color:var(--violet2);border-top-color:transparent;border-radius:50%;animation:wtspin .8s linear infinite}
+  .wt-robot.done .wt-box{background:var(--lime);border-color:var(--lime)}
+  .wt-robot.done .wt-box::after{content:"✓";color:#111;font-weight:800;font-size:14px}
+  @keyframes wtspin{to{transform:rotate(360deg)}}
+  .wt-check{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--muted);cursor:pointer}
+  .wt-check input{width:18px;height:18px;accent-color:var(--lime)}
+  .wt-check a{color:var(--violet2)}
+  .webtrial .btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+  .wt-error{color:#fca5a5;font-size:14px}
+  .wt-label{font-weight:700;margin-bottom:8px}
+  .wt-link{display:flex;gap:8px;margin-bottom:16px}
+  .wt-link input{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:10px 12px;font:inherit;font-size:13px}
+  .wt-link .btn{padding:10px 16px;font-size:14px}
+  .wt-qr{background:#fff;border-radius:14px;padding:10px;width:200px;height:200px;margin:0 auto 16px;display:grid;place-items:center}
+  .wt-qr svg{width:100%;height:100%}
+  .wt-apps{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:10px}
+  .wt-apps .btn{padding:9px 16px;font-size:14px}
+  .wt-small{color:var(--muted);font-size:13px;margin:6px 0}
+  .wt-bot{margin-top:12px;width:100%;max-width:340px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+  .reveal.on{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr}
+    .visual{height:340px;max-width:420px;margin:0 auto;width:100%}
+    .playcard{width:190px;height:270px}
+    .grid3,.plans{grid-template-columns:1fr}
+    .plans{max-width:440px;margin:0 auto}
+    .burger{display:block}
+    .menu{position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg2);border-bottom:1px solid var(--line);display:none;padding:10px 20px 20px}
+    .menu.open{display:flex}
+    .menu a{padding:12px 0;width:100%;text-align:center}
+    .menu .btn{margin-top:8px}
+    section{padding:70px 0}
+  }
+  @media (min-width:600px) and (max-width:900px){.plans{grid-template-columns:repeat(2,1fr);max-width:720px}}
+  @media (max-width:480px){
+    .wrap{padding:0 16px}
+    .stats{gap:24px}
+    .hero-btns .btn{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+/* Оплата через ЮKassa: включить — добавить class="yookassa" к тегу body */ .pay-yk{display:none} body.yookassa .pay-yk{display:revert} body.yookassa .pay-manual{display:none}
+</style>
+</head>
+<body class="yookassa">
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo"><div class="logo-mark">J</div>Joker VPN</a>
+    <nav class="menu" id="menu">
+      <a href="#features">Преимущества</a>
+      <a href="#how">Как подключить</a>
+      <a href="#pricing">Тарифы</a>
+      <a href="#faq">Вопросы</a>
+      <a href="https://t.me/VirtualShieldPro_bot" class="btn btn-main" target="_blank" rel="noopener">Подключить</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+  </div>
+</header>
+
+<main>
+  <!-- ГЛАВНЫЙ ЭКРАН -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="badge"><span class="dot"></span>Серверы работают стабильно</div>
+        <h1>Быстрый и&nbsp;защищённый интернет —<span class="accent">с&nbsp;козырем в&nbsp;рукаве</span></h1>
+        <p>Joker VPN — быстрый и надёжный VPN без урезания скорости. Серверы в Лондоне, Австрии, Финляндии и Швеции, своё приложение Kivin и подключение за пару минут.</p>
+        <div class="hero-btns">
+          <a href="https://t.me/VirtualShieldPro_bot" class="btn btn-main" target="_blank" rel="noopener">Попробовать бесплатно</a>
+          <a href="#pricing" class="btn btn-ghost">Смотреть тарифы</a>
+        </div>
+        <div class="stats">
+          <div><b>4 страны</b><span>серверы в Европе</span></div>
+          <div><b>7 дней</b><span>бесплатно</span></div>
+          <div><b>от 183 ₽</b><span>в месяц</span></div>
+        </div>
+      </div>
+      <div class="visual" aria-hidden="true">
+        <div class="playcard back"></div>
+        <div class="playcard front">
+          <div class="corner">J<br>★</div>
+          <div class="center">
+            <svg class="shield" viewBox="0 0 96 110" fill="none">
+              <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a78bfa"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
+              <path d="M48 4 88 18v34c0 26-17 46-40 54C25 98 8 78 8 52V18L48 4Z" fill="url(#g)"/>
+              <path d="m30 56 12 12 24-26" stroke="#a3e635" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="status"><b>Защищено</b>соединение зашифровано</div>
+          </div>
+          <div class="corner bottom">J<br>★</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРЕИМУЩЕСТВА -->
+  <section id="features">
+    <div class="wrap">
+      <h2 class="reveal">Почему <span class="accent">Joker VPN</span></h2>
+      <p class="sub reveal">Всё, что нужно от хорошего VPN — и ничего лишнего</p>
+      <div class="grid3">
+        <div class="feat reveal"><div class="ico">⚡</div><h3>Без урезания скорости</h3><p>Безлимитный трафик и никаких ограничений скорости — смотрите видео и работайте спокойно.</p></div>
+        <div class="feat reveal"><div class="ico">🛡️</div><h3>Современный протокол</h3><p>VLESS + Xray: надёжное шифрование и стабильное соединение даже в мобильных сетях.</p></div>
+        <div class="feat reveal"><div class="ico">🌍</div><h3>4 страны — одна ссылка</h3><p>🇬🇧 Лондон, 🇦🇹 Австрия, 🇫🇮 Финляндия, 🇸🇪 Швеция. Одна ссылка-подписка открывает все локации сразу.</p></div>
+        <div class="feat reveal"><div class="ico">📲</div><h3>Своё приложение Kivin</h3><p>Наше собственное приложение для Android и Windows: добавили ссылку — и подключились. Обновляется само.</p></div>
+        <div class="feat reveal"><div class="ico">🤝</div><h3>Бонусы за друзей</h3><p>Пригласите друга — когда он впервые оплатит подписку, вы получите +5 дней бесплатно.</p></div>
+        <div class="feat reveal"><div class="ico">💬</div><h3>Живая поддержка</h3><p>Отвечает живой человек в Telegram, поможем с настройкой на любом устройстве.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- КАК ПОДКЛЮЧИТЬ -->
+  <section id="how" class="steps-bg">
+    <div class="wrap">
+      <h2 class="reveal">Подключение за 3 шага</h2>
+      <p class="sub reveal">Никаких сложных инструкций — справится любой</p>
+      <div class="grid3">
+        <div class="step reveal"><div class="num accent">01</div><h3>Откройте бота</h3><p>Перейдите в наш Telegram-бот, нажмите «Старт» и возьмите 7 дней бесплатно или выберите тариф.</p></div>
+        <div class="step reveal"><div class="num accent">02</div><h3>Установите приложение</h3><p>Kivin для Android и Windows, а для iPhone, Mac и других устройств — Happ или INCY.</p></div>
+        <div class="step reveal"><div class="num accent">03</div><h3>Вставьте ссылку</h3><p>Скопируйте ссылку-подписку из «Мой профиль» в боте, добавьте её в приложение — и подключайтесь.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ТАРИФЫ -->
+  <section id="pricing">
+    <div class="wrap">
+      <h2 class="reveal">Тарифы</h2>
+      <p class="sub reveal">Чем дольше период — тем выгоднее. Все функции доступны на любом тарифе.</p>
+      <div class="plans">
+        <div class="plan reveal">
+          <h3>7 дней</h3><div class="save"></div>
+          <div class="price">100 <small>₽</small></div>
+          <div class="per">на неделю — без долгих обязательств</div>
+          <ul><li>Безлимитный трафик</li><li>Все 4 страны</li><li>📱 До 2 устройств</li><li>Живая поддержка</li></ul>
+          <a href="https://t.me/VirtualShieldPro_bot?start=buy_7" class="btn btn-ghost" target="_blank" rel="noopener">Купить</a>
+        </div>
+        <div class="plan reveal">
+          <h3>1 месяц</h3><div class="save"></div>
+          <div class="price">250 <small>₽</small></div>
+          <div class="per">250 ₽ в месяц</div>
+          <ul><li>Безлимитный трафик</li><li>Все 4 страны</li><li>📱 До 5 устройств</li><li>Живая поддержка</li></ul>
+          <a href="https://t.me/VirtualShieldPro_bot?start=buy_30" class="btn btn-ghost" target="_blank" rel="noopener">Купить</a>
+        </div>
+        <div class="plan hot reveal">
+          <div class="tag">Популярный</div>
+          <h3>6 месяцев</h3><div class="save">Экономия 13%</div>
+          <div class="price">1300 <small>₽</small></div>
+          <div class="per">≈217 ₽ в месяц</div>
+          <ul><li>Безлимитный трафик</li><li>Все 4 страны</li><li>📱 До 5 устройств</li><li>Живая поддержка</li></ul>
+          <a href="https://t.me/VirtualShieldPro_bot?start=buy_180" class="btn btn-main" target="_blank" rel="noopener">Купить</a>
+        </div>
+        <div class="plan reveal">
+          <h3>1 год</h3><div class="save">Экономия 27%</div>
+          <div class="price">2200 <small>₽</small></div>
+          <div class="per">≈183 ₽ в месяц</div>
+          <ul><li>Безлимитный трафик</li><li>Все 4 страны</li><li>📱 До 10 устройств</li><li>Живая поддержка</li></ul>
+          <a href="https://t.me/VirtualShieldPro_bot?start=buy_365" class="btn btn-ghost" target="_blank" rel="noopener">Купить</a>
+        </div>
+      </div>
+      <p class="trial reveal pay-manual" style="font-size:14px">💳 Как проходит оплата: нажмите «Купить» — откроется наш Telegram-бот с выбранным тарифом. Переведите сумму по реквизитам (Сбербанк / СБП), пришлите в бот скриншот чека — доступ откроется после проверки платежа.</p>
+      <!-- СБП: когда подключим СБП в ЮKassa — вернуть «картой или через СБП» здесь, в offer.html (раздел 4 п. 2, раздел 8) и privacy.html (раздел 5) -->
+      <p class="trial reveal pay-yk" style="font-size:14px">💳 Оплата банковской картой прямо в боте — доступ открывается автоматически за минуту. Можно и переводом по реквизитам.</p>
+      <div class="trial reveal">
+        <p style="margin-bottom:14px">Не уверены? Попробуйте бесплатно.</p>
+        <a href="https://t.me/VirtualShieldPro_bot" class="btn btn-main" target="_blank" rel="noopener">🎁 7 дней бесплатно в Telegram</a>
+      </div>
+      <p class="trial reveal" style="font-size:13px;margin-top:10px">Оплачивая подписку или активируя пробный период, вы принимаете <a href="offer.html" style="color:var(--violet2);font-weight:500">оферту</a> и <a href="privacy.html" style="color:var(--violet2);font-weight:500">политику конфиденциальности</a>. Не заработало — <a href="offer.html#refund" style="color:var(--violet2);font-weight:500">вернём деньги</a>.</p>
+
+      <!-- ПРОБНАЯ ССЫЛКА НА САЙТЕ (без Telegram). Настройки — в объекте WEB_TRIAL в конце файла -->
+      <div class="webtrial reveal" id="webtrial">
+        <h3>Telegram не открывается или работает нестабильно?</h3>
+        <p class="wt-muted">Получите бесплатную ссылку для подключения прямо здесь — и продолжите в нашем боте.</p>
+        <button class="btn btn-ghost" id="wt-open" type="button">Получить ссылку здесь</button>
+
+        <form id="wt-form" hidden>
+          <button type="button" class="wt-robot" id="wt-robot" aria-live="polite"><span class="wt-box" aria-hidden="true"></span><span id="wt-robot-text">Я не робот</span></button>
+          <label class="wt-check"><input type="checkbox" id="wt-accept"> Принимаю условия <a href="offer.html" target="_blank">публичной оферты</a></label>
+          <button class="btn btn-main" id="wt-submit" type="submit" disabled>Получить ссылку</button>
+          <p class="wt-error" id="wt-error" role="alert" hidden></p>
+        </form>
+
+        <div id="wt-result" hidden>
+          <p class="wt-label">Ваша ссылка для подключения:</p>
+          <div class="wt-link"><input id="wt-link" readonly><button class="btn btn-ghost" id="wt-copy" type="button">Копировать</button></div>
+          <div class="wt-qr" id="wt-qr" aria-label="QR-код ссылки"></div>
+          <div class="wt-apps" id="wt-apps"></div>
+          <p class="wt-small" id="wt-get"></p>
+          <p class="wt-small" id="wt-expires">Ссылка действует 1 день, до 2 устройств.</p>
+          <a class="btn btn-main wt-bot" id="wt-bot" href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener">Перейти в бот</a>
+          <p class="wt-small">В боте ссылка продлится до 7 дней пробного периода, если вы его ещё не брали.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- УСТРОЙСТВА -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2 class="reveal">Приложение <span class="accent">Kivin</span></h2>
+      <p class="sub reveal">Наше собственное приложение: вставили ссылку из бота — и подключились. Дальше обновляется само.</p>
+      <div class="devices reveal" style="margin-bottom:40px">
+        <a class="btn btn-main" href="https://github.com/joker-vpn/kivin-releases/releases/latest" target="_blank" rel="noopener">🤖 Скачать для Android</a>
+        <a class="btn btn-ghost" href="https://github.com/joker-vpn/kivin-releases/releases/latest" target="_blank" rel="noopener">💻 Скачать для Windows</a>
+      </div>
+      <p class="sub reveal" style="margin-bottom:20px">Также работает в приложениях Happ и INCY:</p>
+      <div class="devices reveal">
+        <div class="device"><span>🍏</span>iPhone / iPad</div>
+        <div class="device"><span>🤖</span>Android</div>
+        <div class="device"><span>🪟</span>Windows</div>
+        <div class="device"><span>💻</span>macOS</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="steps-bg">
+    <div class="wrap">
+      <h2 class="reveal">Частые вопросы</h2>
+      <p class="sub reveal">Не нашли ответ? Напишите в <a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener" style="color:var(--lime)">бот поддержки</a> — поможем</p>
+      <div class="faq">
+        <details class="reveal"><summary>Что такое VPN и зачем он нужен?</summary><p>VPN создаёт зашифрованный «туннель» между вашим устройством и интернетом. Так никто посторонний не сможет увидеть, что вы делаете в сети. Joker VPN нужен именно для этого — шифровать соединение и защищать вашу приватность, особенно в общественном Wi-Fi: в кафе, аэропортах и гостиницах. Для обхода ограничений доступа к информации, установленных законодательством РФ, сервис не предназначен.</p></details>
+        <details class="reveal"><summary>Есть ли бесплатный пробный период?</summary><p>Да, 7 дней бесплатно для новых пользователей. Откройте Telegram-бота и активируйте тестовый доступ — оплачивать ничего не нужно.</p></details>
+        <details class="reveal"><summary>Как оплатить подписку?</summary><p class="pay-yk">В боте выберите тариф и оплатите банковской картой — подписка включится автоматически за минуту. Можно и переводом по реквизитам: пришлите в бот скриншот чека, и доступ откроется после проверки.</p><p class="pay-manual">В боте выберите тариф, переведите сумму по реквизитам (Сбербанк / СБП) и пришлите скриншот чека. После проверки подписка продлится автоматически.</p></details>
+        <details class="reveal"><summary>Сколько устройств можно подключить?</summary><p>От 2 до 10 устройств одновременно — в зависимости от тарифа: 7 дней — до 2, 1 месяц и 6 месяцев — до 5, 1 год — до 10. На пробном периоде — до <span class="trial-devices">2</span>. Одну ссылку-подписку можно добавить на телефон, компьютер и планшет.</p></details>
+        <details class="reveal"><summary>Какое приложение выбрать?</summary><p>На Android и Windows рекомендуем наше приложение Kivin. На iPhone, iPad и Mac — Happ или INCY (в российском App Store их нет, нужен Apple ID другой страны).</p></details>
+        <details class="reveal"><summary>Что делать, если VPN не подключается?</summary><p>Обновите подписку в приложении (кнопка 🔄), попробуйте другую страну или другое приложение. Не помогло — напишите в <a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener" style="color:var(--lime)">бот поддержки</a>, поможем.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРИЗЫВ -->
+  <section>
+    <div class="wrap">
+      <div class="cta reveal">
+        <h2>Готовы попробовать?</h2>
+        <p>7 дней бесплатно. Подключение — меньше минуты.</p>
+        <a href="https://t.me/VirtualShieldPro_bot" class="btn btn-main" target="_blank" rel="noopener">Подключить Joker VPN</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="logo"><div class="logo-mark">J</div>Joker VPN</div>
+    <div class="foot-links">
+      <a href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener">Telegram-бот</a>
+      <a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener">Поддержка</a>
+      <a href="#faq">Вопросы</a>
+      <a href="offer.html">Оферта и возврат</a>
+      <a href="privacy.html">Конфиденциальность</a>
+    </div>
+    <div>© <span id="year">2026</span> Joker VPN</div>
+  </div>
+</footer>
+
+<script>
+  // Мобильное меню
+  const menu = document.getElementById('menu');
+  document.getElementById('burger').onclick = () => menu.classList.toggle('open');
+  menu.querySelectorAll('a').forEach(a => a.onclick = () => menu.classList.remove('open'));
+
+  // Плавное появление блоков при прокрутке
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+  }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ===== Пробная ссылка на сайте =====
+  // Проверка «Я не робот» — ALTCHA (proof-of-work): браузер решает задачу с нашего сервера,
+  // внешние сервисы не используются. Библиотека QR-кода загружается только после получения ссылки.
+  // Формат ответа сервера — web-trial-api.md (ветка miniapp).
+  const WEB_TRIAL = {
+    api: 'https://app.joker-kvn.club:8443/api/web-trial',
+    challenge: 'https://app.joker-kvn.club:8443/api/web-trial/challenge',
+    go: 'https://app.joker-kvn.club:8443/go#', // страница-переадресация для «Добавить в приложение»
+    bot: 'VirtualShieldPro_bot'
+  };
+  (() => {
+    const $ = id => document.getElementById(id);
+    const form = $('wt-form'), submit = $('wt-submit'), accept = $('wt-accept'), err = $('wt-error');
+    const robot = $('wt-robot'), robotText = $('wt-robot-text');
+    let token = '', solving = false;
+
+    const loadScript = src => new Promise((ok, fail) => {
+      const s = document.createElement('script'); s.src = src; s.async = true;
+      s.onload = ok; s.onerror = fail; document.head.appendChild(s);
+    });
+    const showError = text => { err.textContent = text; err.hidden = false; };
+    const refresh = () => { submit.disabled = !(token && accept.checked); };
+    const setRobot = (state, text) => {
+      robot.classList.toggle('busy', state === 'busy');
+      robot.classList.toggle('done', state === 'done');
+      robot.disabled = state !== 'idle';
+      robotText.textContent = text;
+    };
+    const resetRobot = () => { token = ''; setRobot('idle', 'Я не робот'); refresh(); };
+
+    // Решение задачи ALTCHA: найти число n, для которого хэш(salt + n) равен challenge
+    const hex = buf => Array.from(new Uint8Array(buf), b => b.toString(16).padStart(2, '0')).join('');
+    async function solveAltcha(ch) {
+      const algo = ch.algorithm || 'SHA-256', max = Number(ch.maxnumber || ch.maxNumber || 1e6);
+      const enc = new TextEncoder(), target = String(ch.challenge).toLowerCase(), started = Date.now();
+      for (let from = 0; from <= max; from += 2000) {
+        const batch = [];
+        for (let n = from; n < Math.min(from + 2000, max + 1); n++)
+          batch.push(crypto.subtle.digest(algo, enc.encode(ch.salt + n)).then(h => hex(h) === target ? n : -1));
+        const found = (await Promise.all(batch)).find(n => n >= 0);
+        if (found !== undefined) return { number: found, took: Date.now() - started };
+      }
+      return null;
+    }
+
+    robot.onclick = async () => {
+      if (solving) return;
+      if (!(window.crypto && crypto.subtle)) { showError('Этот браузер не поддерживает проверку. Откройте нашего бота или обновите браузер.'); return; }
+      solving = true; err.hidden = true; setRobot('busy', 'Проверка…');
+      try {
+        const r = await fetch(WEB_TRIAL.challenge, { cache: 'no-store' });
+        if (!r.ok) throw new Error('challenge');
+        const ch = await r.json();
+        const res = await solveAltcha(ch);
+        if (!res) throw new Error('unsolved');
+        token = btoa(JSON.stringify({ algorithm: ch.algorithm, challenge: ch.challenge, number: res.number,
+                                      salt: ch.salt, signature: ch.signature, took: res.took }));
+        setRobot('done', 'Готово');
+      } catch (e) {
+        resetRobot();
+        showError(e instanceof TypeError ? NO_CONNECTION : 'Проверка не прошла. Нажмите «Я не робот» ещё раз.');
+      } finally { solving = false; refresh(); }
+    };
+
+    $('wt-open').onclick = () => { $('wt-open').hidden = true; form.hidden = false; };
+    accept.onchange = refresh;
+
+    const messages = {
+      ip_limit: d => `Ссылку с этого подключения уже получали. Попробуйте через ${d.days || 30} дней или откройте бота.`,
+      busy: () => 'Сейчас слишком много запросов. Попробуйте через час или откройте бота.',
+      rate: () => 'Слишком частые запросы. Подождите минуту и попробуйте снова.',
+      captcha_failed: d => d.reason === 'expired'
+        ? 'Проверка устарела (действует 5 минут). Нажмите «Я не робот» ещё раз.'
+        : 'Проверка «Я не робот» не прошла. Нажмите «Я не робот» ещё раз.',
+      offer_required: () => 'Чтобы получить ссылку, отметьте согласие с условиями оферты.',
+      disabled: () => 'Получение ссылки на сайте временно недоступно. Откройте нашего бота.',
+      forbidden: () => 'Ссылку можно получить только на сайте joker-kvn.club. Откройте нашего бота.',
+      error: () => 'Не получилось выдать ссылку. Попробуйте позже или откройте бота.'
+    };
+    const GENERIC = 'Не получилось выдать ссылку. Попробуйте позже или откройте бота.';
+    const NO_CONNECTION = 'Не удалось связаться с сервером. Попробуйте позже или откройте бота.';
+    const isHttps = u => typeof u === 'string' && /^https:\/\//i.test(u);
+
+    form.onsubmit = async e => {
+      e.preventDefault(); err.hidden = true; submit.disabled = true; submit.textContent = 'Получаем ссылку…';
+      try {
+        const r = await fetch(WEB_TRIAL.api, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ altcha: token, accept_offer: true }) // имя поля — согласовать с сервером
+        });
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok || data.result !== 'ok' || !isHttps(data.sub_url)) {
+          const msg = messages[data.result];
+          throw new Error(msg ? msg(data) : GENERIC);
+        }
+        await showResult(data);
+      } catch (ex) {
+        showError(ex instanceof TypeError ? NO_CONNECTION : ex.message);
+        // решение проверки одноразовое — после любой ошибки её нужно пройти заново
+        resetRobot();
+      } finally {
+        submit.textContent = 'Получить ссылку'; refresh();
+      }
+    };
+
+    async function showResult(d) {
+      form.hidden = true; $('wt-result').hidden = false;
+      $('wt-link').value = d.sub_url;
+
+      // Кнопки «Добавить в …» и ссылки на скачивание приложений (только Kivin, Happ, INCY)
+      const apps = (Array.isArray(d.apps) ? d.apps : []).filter(a => a && ['kivin', 'happ', 'incy'].includes(a.id));
+      const box = $('wt-apps'), get = $('wt-get');
+      box.textContent = ''; get.textContent = '';
+      apps.forEach(a => {
+        if (typeof a.scheme === 'string' && /^(kivin|happ|incy):\/\//.test(a.scheme)) {
+          const b = document.createElement('a');
+          b.className = 'btn btn-ghost';
+          b.href = WEB_TRIAL.go + encodeURIComponent(a.scheme + d.sub_url);
+          b.textContent = 'Добавить в ' + (a.name || a.id);
+          box.appendChild(b);
+        }
+      });
+      const dl = [];
+      apps.forEach(a => (Array.isArray(a.get) ? a.get : []).forEach(([os, url]) => {
+        if (isHttps(url)) dl.push([`${a.name || a.id} для ${os}`, url]);
+      }));
+      if (dl.length) {
+        get.append('Нет приложения? Скачайте: ');
+        dl.forEach(([label, url], i) => {
+          const l = document.createElement('a');
+          l.href = url; l.target = '_blank'; l.rel = 'noopener'; l.textContent = label;
+          l.style.color = 'var(--violet2)';
+          get.append(l, i < dl.length - 1 ? ' · ' : '');
+        });
+      }
+
+      if (isHttps(d.bind_url)) $('wt-bot').href = d.bind_url;
+
+      const days = d.days || 1, devices = d.devices || 2;
+      let when = `${days} ${days === 1 ? 'день' : days < 5 ? 'дня' : 'дней'}`;
+      const dt = new Date(Number(d.expires_ms));
+      if (d.expires_ms && !isNaN(dt)) when = 'до ' + dt.toLocaleString('ru-RU', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+      $('wt-expires').textContent = `Ссылка действует ${when}, до ${devices} устройств.` +
+        (d.locations ? ` Страны: ${d.locations}.` : '');
+
+      try {
+        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js');
+        const qr = qrcode(0, 'M'); qr.addData(d.sub_url); qr.make();
+        $('wt-qr').innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+      } catch (e) { $('wt-qr').hidden = true; }
+    }
+
+    $('wt-copy').onclick = async () => {
+      const inp = $('wt-link');
+      try { await navigator.clipboard.writeText(inp.value); }
+      catch (e) { inp.select(); document.execCommand('copy'); }
+      $('wt-copy').textContent = 'Скопировано ✓';
+      setTimeout(() => $('wt-copy').textContent = 'Копировать', 2000);
+    };
+  })();
+</script>
+</body>
+</html>
