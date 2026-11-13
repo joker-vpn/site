@@ -130,8 +130,6 @@
   .tp-dev.many{gap:2px}
   .tp-dev.many i{width:5px}
   .plan .btn{width:100%;margin-top:auto}
-  .tp-trial{font-size:14px}
-  .tp-trial a{color:var(--lime);font-weight:700}
   /* три шага */
   .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;position:relative}
   .steps-line{position:absolute;top:34px;left:16%;right:16%;border-top:2px dashed #3b3363}
@@ -182,11 +180,49 @@
   .foot-links a:hover{color:var(--text)}
 
   /* пробная ссылка на сайте */
-  .webtrial{max-width:620px;margin:44px auto 0;padding:26px 24px;border:1px dashed var(--line);border-radius:var(--radius);text-align:center;background:rgba(24,21,38,.5)}
-  .webtrial h3{font-size:18px;margin-bottom:6px}
-  .wt-muted{color:var(--muted);font-size:15px;margin-bottom:18px}
-  .webtrial form{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:6px}
-  .wt-robot{display:flex;align-items:center;gap:12px;width:100%;max-width:300px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);font:inherit;font-weight:500;cursor:pointer;text-align:left}
+  /* баннер «7 дней» и оплата */
+  .cta7{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:40px;padding:34px 40px;border-radius:26px;background:radial-gradient(circle at 90% 50%,rgba(163,230,53,.18),transparent 45%),linear-gradient(120deg,#2a1d57,var(--card) 65%);border:1px solid #4c3a8a;box-shadow:0 20px 60px rgba(124,58,237,.25)}
+  .cta7-suit{position:absolute;right:250px;top:-40px;font-size:180px;line-height:1;color:rgba(163,230,53,.06);font-weight:800;pointer-events:none}
+  .cta7-text{position:relative}
+  .cta7-k{font-size:44px;font-weight:800;color:var(--lime);line-height:1}
+  .cta7-k small{color:var(--text);font-size:26px;margin-left:8px}
+  .cta7 p{margin:10px 0 0;color:#c9c5d8;font-size:16px}
+  .cta7-go{position:relative;display:flex;align-items:center;gap:10px;background:var(--lime);color:#0b0a12;font-weight:800;font-size:17px;padding:18px 28px;border-radius:16px;box-shadow:0 12px 34px rgba(163,230,53,.35);white-space:nowrap;transition:transform .15s,box-shadow .15s}
+  .cta7-go:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(163,230,53,.45)}
+  .cta7-go .i{width:22px;height:22px;vertical-align:0}
+  .paychips{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:18px}
+  .paychip{display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;background:#14111f;border:1px solid #241f38;font-size:14px;color:#d9d7e6}
+  .paychip .i{width:20px;height:20px;color:var(--lime);vertical-align:0}
+  .paychip b{color:var(--text)}
+  body.yookassa .paychip.pay-yk{display:flex}
+  .wt-check{text-align:left}
+  .legal{text-align:center;color:#8a8699;font-size:13px;margin:14px auto 0;max-width:720px}
+  .legal a{color:#b9a6ff}
+  /* пробная ссылка на сайте */
+  .webtrial{margin-top:46px;display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center;padding:30px 34px;border-radius:24px;background:#14111f;border:1px solid var(--line)}
+  .wt-ic{width:52px;height:52px;border-radius:16px;background:rgba(124,58,237,.18);display:grid;place-items:center;margin-bottom:14px;color:var(--violet2)}
+  .wt-ic .i{width:28px;height:28px;vertical-align:0}
+  .wt-info h3{font-size:24px;margin-bottom:8px}
+  .wt-info p{color:#a9a5bb;line-height:1.55}
+  .wt-facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .wt-facts span{padding:6px 12px;border-radius:999px;background:#231d38;font-size:13px;color:#d9d7e6}
+  .wt-facts b{color:var(--lime)}
+  .wt-panel{background:#0f0d18;border:1px solid var(--line);border-radius:20px;padding:20px;text-align:center}
+  [hidden]{display:none!important}
+  .webtrial form{display:flex;flex-direction:column;gap:12px}
+  .wt-hint{text-align:center;font-size:12px;color:#8a8699}
+  @media (max-width:900px){
+    .cta7{flex-direction:column;align-items:flex-start;padding:28px 24px}
+    .cta7-suit{right:-20px}
+    .webtrial{grid-template-columns:1fr;padding:24px 20px}
+  }
+  @media (max-width:480px){
+    .cta7-k{font-size:36px}
+    .cta7-k small{font-size:21px}
+    .cta7-go{width:100%;justify-content:center}
+    .paychip{width:100%}
+  }
+  .wt-robot{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);font:inherit;font-weight:500;cursor:pointer;text-align:left}
   .wt-robot:hover{border-color:var(--violet2)}
   .wt-robot[disabled]{cursor:default}
   .wt-box{width:22px;height:22px;flex:none;border:2px solid var(--muted);border-radius:6px;display:grid;place-items:center}
@@ -280,7 +316,9 @@
   .b-big small{font-size:18px;color:var(--muted);font-weight:600}
   .b-bars{display:flex;align-items:flex-end;gap:7px;height:110px;margin-top:14px}
   .b-bars i{width:16px;border-radius:5px;background:linear-gradient(180deg,var(--lime),#4d7c0f);display:block}
-  .b-shield{position:absolute;right:-20px;bottom:-24px;width:150px;pointer-events:none}
+  .b-shield{position:absolute;right:-16px;top:-14px;width:96px;pointer-events:none;z-index:0}
+  .b-prot > :not(.b-shield){position:relative;z-index:1}
+  @media (max-width:360px),(min-width:601px) and (max-width:760px),(min-width:901px) and (max-width:1080px){.b-shield{width:70px;right:-18px;top:-18px}}
   .b-flags{display:flex;gap:8px;margin:4px 0 16px}
   .b-flags img{width:44px;height:30px;border-radius:6px;box-shadow:0 4px 14px rgba(0,0,0,.4)}
   .b-kv{display:flex;gap:12px;align-items:center;margin-bottom:14px}
@@ -409,6 +447,7 @@
   <symbol id="b-android" viewBox="0 0 24 24"><path d="M7 9h10v8a1 1 0 0 1-1 1h-1v3h-2v-3h-2v3H9v-3H8a1 1 0 0 1-1-1zM4.5 9a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0zm13 0a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0zM7 8a5 5 0 0 1 10 0z"/></symbol>
   <symbol id="b-windows" viewBox="0 0 24 24"><path d="M3 5.5 10 4.5v7H3zm8-1.2L21 3v8.5H11zM3 12.5h7v7L3 18.5zm8 0h10V21l-10-1.4z"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-wifi-off" viewBox="0 0 24 24"><path d="M2 8.5a15 15 0 0 1 20 0"/><path d="M5 12a10 10 0 0 1 14 0"/><path d="M8.5 15.5a5 5 0 0 1 7 0"/><path d="M12 19h.01"/><path d="M3 3l18 18"/></symbol>
   <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
 </svg>
 
@@ -590,27 +629,37 @@
           <a href="https://t.me/VirtualShieldPro_bot?start=buy_365" class="btn btn-ghost" target="_blank" rel="noopener">Купить</a>
         </div>
       </div>
-      <p class="trial reveal tp-trial">Не уверены? <a href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener">7&nbsp;дней бесплатно</a> — один раз, без привязки карты</p>
-      <p class="trial reveal pay-manual" style="font-size:14px"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg> Как проходит оплата: нажмите «Купить» — откроется наш Telegram-бот с выбранным тарифом. Переведите сумму по реквизитам (Сбербанк / СБП), пришлите в бот скриншот чека — доступ откроется после проверки платежа.</p>
-      <!-- СБП: когда подключим СБП в ЮKassa — вернуть «картой или через СБП» здесь, в offer.html (раздел 4 п. 2, раздел 8) и privacy.html (раздел 5) -->
-      <p class="trial reveal pay-yk" style="font-size:14px"><svg class="i" aria-hidden="true"><use href="#i-card"/></svg> Оплатите банковской картой прямо в&nbsp;боте — доступ откроется автоматически за&nbsp;минуту. Можно и&nbsp;переводом по&nbsp;реквизитам.</p>
-      <div class="trial reveal">
-        <a href="https://t.me/VirtualShieldPro_bot" class="btn btn-main" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg> 7 дней бесплатно в Telegram</a>
+      <div class="cta7 reveal">
+        <span class="cta7-suit" aria-hidden="true">♠︎</span>
+        <div class="cta7-text">
+          <div class="cta7-k">7&nbsp;дней<small>бесплатно</small></div>
+          <p>Один раз, без привязки карты. Пробный период включается в&nbsp;боте одной кнопкой.</p>
+        </div>
+        <a class="cta7-go" href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Открыть бота</a>
       </div>
-      <p class="trial reveal" style="font-size:13px;margin-top:10px">Оплачивая подписку или активируя пробный период, вы принимаете <a href="offer.html" style="color:var(--violet2);font-weight:500">оферту</a> и <a href="privacy.html" style="color:var(--violet2);font-weight:500">политику конфиденциальности</a>. Не заработало — <a href="offer.html#refund" style="color:var(--violet2);font-weight:500">вернём деньги</a>.</p>
+      <!-- СБП: когда подключим СБП в ЮKassa — вернуть «картой или через СБП» здесь, в offer.html (раздел 4 п. 2, раздел 8) и privacy.html (раздел 5) -->
+      <div class="paychips reveal">
+        <div class="paychip pay-yk"><svg class="i" aria-hidden="true"><use href="#i-card"/></svg><span><b>Картой в&nbsp;боте</b> — доступ откроется за&nbsp;минуту</span></div>
+        <div class="paychip"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg><span><b>Переводом</b> по&nbsp;реквизитам</span></div>
+      </div>
+      <p class="legal reveal">Оплачивая подписку или включая пробный период, вы&nbsp;принимаете <a href="offer.html">оферту</a> и&nbsp;<a href="privacy.html">политику конфиденциальности</a>. Не&nbsp;заработало — <a href="offer.html#refund">вернём деньги</a>.</p>
 
       <!-- ПРОБНАЯ ССЫЛКА НА САЙТЕ (без Telegram). Настройки — в объекте WEB_TRIAL в конце файла -->
       <div class="webtrial reveal" id="webtrial">
-        <h3>Telegram не открывается или работает нестабильно?</h3>
-        <p class="wt-muted">Получите бесплатную ссылку для подключения прямо здесь — и продолжите в нашем боте.</p>
-        <button class="btn btn-ghost" id="wt-open" type="button">Получить ссылку здесь</button>
-
-        <form id="wt-form" hidden>
-          <button type="button" class="wt-robot" id="wt-robot" aria-live="polite"><span class="wt-box" aria-hidden="true"></span><span id="wt-robot-text">Я не робот</span></button>
-          <label class="wt-check"><input type="checkbox" id="wt-accept"> Принимаю условия <a href="offer.html" target="_blank">публичной оферты</a></label>
-          <button class="btn btn-main" id="wt-submit" type="submit" disabled>Получить ссылку</button>
-          <p class="wt-error" id="wt-error" role="alert" hidden></p>
-        </form>
+        <div class="wt-info">
+          <div class="wt-ic"><svg class="i" aria-hidden="true"><use href="#i-wifi-off"/></svg></div>
+          <h3>Telegram не&nbsp;открывается?</h3>
+          <p>Получите пробную ссылку прямо на&nbsp;сайте и&nbsp;подключитесь сразу. В&nbsp;боте её можно продлить до&nbsp;7&nbsp;дней.</p>
+          <div class="wt-facts"><span><b>1</b> день</span><span><b>2</b> устройства</span><span>без регистрации</span></div>
+        </div>
+        <div class="wt-panel">
+          <form id="wt-form">
+            <button type="button" class="wt-robot" id="wt-robot" aria-live="polite"><span class="wt-box" aria-hidden="true"></span><span id="wt-robot-text">Я не робот</span></button>
+            <label class="wt-check"><input type="checkbox" id="wt-accept"><span>Принимаю условия <a href="offer.html" target="_blank">публичной оферты</a></span></label>
+            <button class="btn btn-main" id="wt-submit" type="submit" disabled>Получить ссылку</button>
+            <p class="wt-hint">Кнопка станет активной после двух отметок</p>
+            <p class="wt-error" id="wt-error" role="alert" hidden></p>
+          </form>
 
         <div id="wt-result" hidden>
           <p class="wt-label">Ваша ссылка для подключения:</p>
@@ -621,6 +670,7 @@
           <p class="wt-small" id="wt-expires">Ссылка действует 1&nbsp;день и&nbsp;подходит для 2&nbsp;устройств.</p>
           <a class="btn btn-main wt-bot" id="wt-bot" href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener">Перейти в бот</a>
           <p class="wt-small">В боте срок ссылки продлится до 7&nbsp;дней, если вы ещё не&nbsp;брали пробный период.</p>
+        </div>
         </div>
       </div>
     </div>
@@ -807,7 +857,6 @@
       } finally { solving = false; refresh(); }
     };
 
-    $('wt-open').onclick = () => { $('wt-open').hidden = true; form.hidden = false; };
     accept.onchange = refresh;
 
     const messages = {
