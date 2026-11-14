@@ -16,7 +16,8 @@
 <meta property="og:image:width" content="512">
 <meta property="og:image:height" content="512">
 <meta property="og:locale" content="ru_RU">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/manrope.css">
 <style>
 /* Общий стиль страниц с документами (оферта, политика) */
 :root{--bg:#0b0a12;--card:#181526;--line:#2a2540;--text:#ecebf3;--muted:#9a96ad;--violet:#7c3aed;--violet2:#a78bfa;--lime:#a3e635}
@@ -69,7 +70,7 @@ th{background:var(--card)}
 
 <main>
 <h1>Политика конфиденциальности</h1>
-<p class="date">редакция от 13 ноября 2026 г.</p>
+<p class="date">редакция от 14 ноября 2026 г.</p>
 
 <div class="note">Коротко: мы знаем ваш Telegram-аккаунт, данные о подписке и технические данные подключения (IP, тип устройства). Мы не спрашиваем имя, телефон и почту, не ведём журнал посещённых сайтов и никому не продаём данные.</div>
 
@@ -125,7 +126,7 @@ th{background:var(--card)}
 <ul>
   <li>Сайт не использует cookie и счётчики посещений.</li>
   <li>На главной странице есть форма получения пробной ссылки. Чтобы защититься от автоматических запросов, браузер решает небольшую вычислительную задачу с нашего сервера; дополнительные данные при этом не собираются и третьим лицам не передаются. Затем сайт отправляет на наш сервер решение задачи и ваше согласие с офертой, а сервер выдаёт пробную ссылку. Ваш IP-адрес при этом сохраняется только в виде хэша (см. разделы 2 и 4).</li>
-  <li>Шрифт страницы загружается с сервиса Google Fonts, а библиотека для QR-кода — с сервиса cdnjs (Cloudflare). Эти сервисы получают технические данные запроса (например, IP-адрес) по своим правилам.</li>
+  <li>Шрифты и библиотека для QR-кода загружаются с нашего сервера, сторонним сервисам при открытии сайта ничего не передаётся.</li>
 </ul>
 
 <h2>7. Как мы защищаем данные</h2>
@@ -148,10 +149,11 @@ th{background:var(--card)}
       <p>Быстрый и&nbsp;защищённый интернет: четыре страны, своё приложение и&nbsp;живая поддержка.</p>
     </div>
     <div class="sf-col"><h4>Сервис</h4><a href="index.html#pricing">Тарифы</a><a href="index.html#apps">Приложения</a><a href="index.html#faq">Вопросы</a></div>
-    <div class="sf-col"><h4>Помощь</h4><a href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener">Telegram-бот</a><a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener">Поддержка</a></div>
+    <div class="sf-col"><h4>Связь</h4><a href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener">Telegram-бот</a><a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener">Поддержка</a><a href="https://t.me/+Ng77Bq1Twcc4Njg6" target="_blank" rel="noopener">Telegram-канал</a></div>
     <div class="sf-col"><h4>Документы</h4><a href="offer.html">Оферта и возврат</a><a href="privacy.html">Конфиденциальность</a></div>
     <div class="sf-copy"><span>© 2026 Joker VPN</span><span>Сделано с&nbsp;козырем в&nbsp;рукаве</span></div>
   </div>
 </footer>
+<script src="js/tg.js" defer></script>
 </body>
 </html>

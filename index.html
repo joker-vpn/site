@@ -16,8 +16,8 @@
 <meta property="og:image:width" content="512">
 <meta property="og:image:height" content="512">
 <meta property="og:locale" content="ru_RU">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/manrope.css">
 <style>
   :root{
     --bg:#0b0a12; --bg2:#13111d; --card:#181526; --line:#2a2540;
@@ -839,7 +839,7 @@
       <p>Быстрый и&nbsp;защищённый интернет: четыре страны, своё приложение и&nbsp;живая поддержка.</p>
     </div>
     <div class="sf-col"><h4>Сервис</h4><a href="#pricing">Тарифы</a><a href="#apps">Приложения</a><a href="#faq">Вопросы</a></div>
-    <div class="sf-col"><h4>Помощь</h4><a href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener">Telegram-бот</a><a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener">Поддержка</a></div>
+    <div class="sf-col"><h4>Связь</h4><a href="https://t.me/VirtualShieldPro_bot" target="_blank" rel="noopener">Telegram-бот</a><a href="https://t.me/JokerVPN_help_bot" target="_blank" rel="noopener">Поддержка</a><a href="https://t.me/+Ng77Bq1Twcc4Njg6" target="_blank" rel="noopener">Telegram-канал</a></div>
     <div class="sf-col"><h4>Документы</h4><a href="offer.html">Оферта и возврат</a><a href="privacy.html">Конфиденциальность</a></div>
     <div class="sf-copy"><span>© <span id="year">2026</span> Joker VPN</span><span>Сделано с&nbsp;козырем в&nbsp;рукаве</span></div>
   </div>
@@ -1021,7 +1021,7 @@
         (d.locations ? ` Страны: ${d.locations}.` : '');
 
       try {
-        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js');
+        await loadScript('js/qrcode.min.js');
         const qr = qrcode(0, 'M'); qr.addData(d.sub_url); qr.make();
         $('wt-qr').innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
       } catch (e) { $('wt-qr').hidden = true; }
@@ -1036,5 +1036,6 @@
     };
   })();
 </script>
+<script src="js/tg.js" defer></script>
 </body>
 </html>
